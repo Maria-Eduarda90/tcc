@@ -1,0 +1,109 @@
+.img {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.container {
+    min-width: 1440px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.container-form {
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+h1 {
+    color: var(--blue-dark);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 0.875rem;
+    font-size: 1rem;
+}
+
+.div-icon h1 {
+    margin-bottom: 0.875rem;
+}
+
+.div-iconTwo h1 {
+    margin-top: 1rem;
+    margin-bottom: 0.875rem;
+}
+
+#checkbox{
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.div-checkbox {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.div-checkbox a {
+    margin-right: 3.5rem;
+    color: var(--blue-dark);
+}
+
+input{
+    width: 20rem;
+    height: 3rem;
+    border-radius: 0.25rem;
+    border: .2rem solid var(--grey);
+    padding: 0.5rem;
+}
+
+.div-icon input{
+    background: url('../../images/user.svg') no-repeat 7px;
+    background-position: 96%;
+}
+
+.div-iconTwo input{
+    background: url('../../images/lock.svg') no-repeat 7px;
+    background-position: 96%;
+}
+
+.buttons {
+    display: grid;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.buttons button:nth-child(1){
+    background: var(--blue-dark);
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.937rem;
+}
+
+.buttons button:nth-child(2){
+    background: none;
+    border: .2rem solid var(--blue-dark);
+    color: var(--blue-dark);
+    font-weight: 500;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+@media(max-width: 400px){
+    .container-form{
+        width: 100%;
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+    }
+
+    .img {
+        display: none;
+    }
+}

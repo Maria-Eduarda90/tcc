@@ -1,0 +1,15 @@
+.token {
+    margin-top: 6rem;
+}
+
+.token input {
+    text-align: center;
+}
+
+.token h1 {
+    margin-bottom: 0.625rem;
+}
+
+.form-token {
+    margin-right: 4rem;
+}

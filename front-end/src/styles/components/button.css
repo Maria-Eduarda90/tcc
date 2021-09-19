@@ -1,0 +1,13 @@
+button{
+    background: none;
+    border: .2rem solid var(--blue-dark);
+    color: var(--blue-dark);
+    font-weight: 500;
+
+    padding: 0.75rem 4.12rem;
+    cursor: pointer;
+    border-radius: 0.437rem;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 2.5rem;
+}
