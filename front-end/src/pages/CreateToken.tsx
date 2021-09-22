@@ -38,7 +38,7 @@ export function CreateToken() {
                         <input type="password" name="password" id="password" placeholder="XDA-CDA-ETRT-34DS" required />
                     </div>
                 </div>
-                <div className="buttons">
+                <div className="buttons finish">
                     <Button>
                         Finalizar
                     </Button>

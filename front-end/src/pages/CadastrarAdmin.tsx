@@ -1,5 +1,5 @@
 import background from '../images/background.png';
-import { Button } from '../components/Button';
+import { Link } from 'react-router-dom';
 
 import '../styles/pages/cadastrarAdmin.css';
 
@@ -33,9 +33,11 @@ export function CadastrarAdmin(){
                     </div>
 
                     <div className="button">
-                        <Button>
-                            continuar
-                        </Button>
+                        <Link to="createToken">
+                            <button className="continue">
+                                continuar
+                            </button>
+                        </Link>
                     </div>
                 </form>
             </div>

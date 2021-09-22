@@ -7,7 +7,6 @@
 }
 
 .container {
-    min-width: 1440px;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -17,7 +16,7 @@
 .container-form {
     display: flex;
     align-items: center;
-    margin-right: 3rem;
+    margin-right: 3.5rem;
 }
 
 h1 {
@@ -78,30 +77,23 @@ input{
     margin-top: 2rem;
 }
 
-.buttons button:nth-child(1){
+.buttons .enter{
     background: var(--blue-dark);
     color: white;
     font-weight: 700;
     margin-bottom: 0.937rem;
 }
 
-.buttons button:nth-child(2){
-    background: none;
-    border: .2rem solid var(--blue-dark);
-    color: var(--blue-dark);
-    font-weight: 500;
-}
-
 button:hover {
     filter: brightness(1.2);
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .container-form{
         width: 100%;
         margin-right: 1.5rem;
-        margin-left: 1.5rem;
-    }
+        margin-left: 4.5rem;
+    }          
 
     .img {
         display: none;

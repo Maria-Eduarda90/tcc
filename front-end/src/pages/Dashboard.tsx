@@ -1,7 +1,9 @@
-export function TelaAdmin(){
+import { Header } from '../components/Header';
+
+export function Dashboard(){
     return(
         <div>
-            
+            <Header/>
         </div>
     );
 }
