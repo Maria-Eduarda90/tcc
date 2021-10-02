@@ -11,9 +11,10 @@
 }
 
 .form-token {
-    margin-right: 2rem;
+    margin-right: 3.5rem;
 }
 
-.finish Button{
-    margin-left: 7rem;
+.finish button{
+    margin-top: 2rem; 
+    margin-right: -15rem;
 }

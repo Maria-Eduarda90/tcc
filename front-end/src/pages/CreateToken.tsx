@@ -1,5 +1,4 @@
 import background from '../images/background.png';
-import { Button } from '../components/Button';
 import '../styles/pages/createToken.css';
 
 export function CreateToken() {
@@ -35,13 +34,13 @@ export function CreateToken() {
                     <div>
                         <h1>Token de acesso</h1>
                         <label className="sr-only" htmlFor="password">senha</label>
-                        <input type="password" name="password" id="password" placeholder="XDA-CDA-ETRT-34DS" required />
+                        <input type="password" name="password" id="password" placeholder="XXX-XXX-XXX-XXX" required />
                     </div>
                 </div>
                 <div className="buttons finish">
-                    <Button>
-                        Finalizar
-                    </Button>
+                    <button className="LinkButton">
+                        FINALIZAR
+                    </button>
                 </div>
             </form>
             </div>

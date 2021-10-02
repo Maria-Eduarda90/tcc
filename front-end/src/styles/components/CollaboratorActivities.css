@@ -1,0 +1,4 @@
+.ContainerDivButton .filter {
+    background: url('../../images/filter.svg') no-repeat 9px;
+    padding-left: 2.5rem;
+}

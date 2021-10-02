@@ -1,5 +1,4 @@
 import background from '../images/background.png';
-import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
 
 import '../styles/pages/login.css'
@@ -14,16 +13,16 @@ export function Login(){
                 <form action="" method="POST">
                     <div className="input-div">
                         <div className="div-icon">
-                            <h1>Seu email/usuário</h1>
+                            <h1>Seu email</h1>
                             <label className="sr-only" htmlFor="email">email</label>
-                            <input type="email" name="email" id="email"/>
+                            <input type="email" name="email" id="email" required/>
                         </div>
                     </div>
                     <div className="input-icons">
                         <div className="div-iconTwo">
                             <h1>Senha</h1>
                             <label className="sr-only" htmlFor="password">senha</label>
-                            <input type="password" name="password" id="password"/>
+                            <input type="password" name="password" id="password" required/>
                         </div>
                     </div>
 
@@ -35,16 +34,15 @@ export function Login(){
 
                     <div className="buttons">
                         <button className="enter">
-                            entrar
+                            ENTRAR
                         </button>
-
-                        <Link to="cadastrarAdmin">
-                            <Button>
-                                criar nova conta
-                            </Button>
-                        </Link>
                     </div>
                 </form>
+                <Link to="cadastrarAdmin" className="LinkPropsButton">
+                    <button className="LinkButton">
+                        CRIAR NOVA CONTA
+                    </button>
+                </Link>
             </div>
         </div>
     );

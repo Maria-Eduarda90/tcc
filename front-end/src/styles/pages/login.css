@@ -14,9 +14,7 @@
 }
 
 .container-form {
-    display: flex;
-    align-items: center;
-    margin-right: 3.5rem;
+    margin-right: 4rem;
 }
 
 h1 {
@@ -66,7 +64,7 @@ input{
     background-position: 96%;
 }
 
-.div-iconTwo input{
+.div-iconTwo input {
     background: url('../../images/lock.svg') no-repeat 7px;
     background-position: 96%;
 }
@@ -75,13 +73,6 @@ input{
     display: grid;
     justify-content: center;
     margin-top: 2rem;
-}
-
-.buttons .enter{
-    background: var(--blue-dark);
-    color: white;
-    font-weight: 700;
-    margin-bottom: 0.937rem;
 }
 
 button:hover {

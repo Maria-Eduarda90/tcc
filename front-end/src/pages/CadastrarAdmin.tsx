@@ -33,9 +33,9 @@ export function CadastrarAdmin(){
                     </div>
 
                     <div className="button">
-                        <Link to="createToken">
+                        <Link to="createToken" className="LinkPropsButton register">
                             <button className="continue">
-                                continuar
+                                CONTINUAR
                             </button>
                         </Link>
                     </div>

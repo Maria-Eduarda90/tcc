@@ -9,6 +9,16 @@
     --blue-dark: #114C74;
     --brown: #727475;
     --grey: #CBD2D9; 
+    --grey-brown: #78808D;
+    --grey-brown: #A4AAB4;
+    --grey-100: #EDEDF3;
+    --color-card: #35393B;
+
+    --green: #9EC183;
+    --dark-green: #356966;
+    --orange: #FF8404;
+    --violet: #C270C9;
+    --green-water: #52CEC7;
 
     /* fonts */
     /* --Poppins: 'Poppins' sans-serif;
@@ -26,6 +36,36 @@
     clip-path: rect(0,0,0,0);
     white-space: nowrap;
     border-width: 0;
+}
+
+button{
+    border: .2rem solid var(--blue-dark);
+    cursor: pointer;
+    border-radius: 0.437rem;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 2.5rem;
+}
+
+.enter{
+    background: var(--blue-dark);
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.937rem;
+    padding: 0.75rem 4.12rem;
+}
+
+.LinkPropsButton {
+    display: grid;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.LinkButton {
+    background: none;
+    color: var(--blue-dark);
+    font-weight: 500;
+    padding: 0.75rem 1.62rem;
 }
 
 @media(max-width: 1000px){
