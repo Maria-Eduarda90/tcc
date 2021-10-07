@@ -16,7 +16,7 @@ export const DropdownMenu = () => {
                 <RiArrowDownSLine/>
             </div>
             <nav
-             ref={dropdownRef} 
+             ref={dropdownRef}
              className={
                  `menu ${isActive ? 'active' : 'inactive'}`
                 }>

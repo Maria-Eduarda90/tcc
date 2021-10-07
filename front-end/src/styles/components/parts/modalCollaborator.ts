@@ -14,4 +14,4 @@ export const Container =  styled.div `
     .contributors span {
         margin-left: 0.5rem;
     }
-`
+`;

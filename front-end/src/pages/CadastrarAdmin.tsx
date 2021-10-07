@@ -1,9 +1,11 @@
+import React,{ useState } from 'react';
 import background from '../images/background.png';
 import { Link } from 'react-router-dom';
 
 import '../styles/pages/cadastrarAdmin.css';
 
 export function CadastrarAdmin(){
+
     return(
         <div className="container">
             <div className="img">
