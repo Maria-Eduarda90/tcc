@@ -9,6 +9,8 @@ import { ThemeProvider } from 'styled-components';
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 
+import { Board } from '../components/Board';
+
 export function KanbanBoard() {
     const [ theme, setTheme ] = usePersistedState('theme', light);
 
@@ -21,6 +23,7 @@ export function KanbanBoard() {
             <div>
                 <GlobalStyle/>
                 <Sidebarkanbanboard toggleTheme={toggleTheme}/>
+                <Board/>
             </div>
         </ThemeProvider>
     );
