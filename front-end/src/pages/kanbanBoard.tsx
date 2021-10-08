@@ -1,3 +1,6 @@
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
 
 import usePersistedState from '../utils/usePersistedState';
@@ -19,12 +22,14 @@ export function KanbanBoard() {
     }
 
     return(
-        <ThemeProvider theme={theme}>
-            <div>
-                <GlobalStyle/>
-                <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                <Board/>
-            </div>
-        </ThemeProvider>
+        <DndProvider backend={HTML5Backend}>
+            <ThemeProvider theme={theme}>
+                <div>
+                    <GlobalStyle/>
+                    <Sidebarkanbanboard toggleTheme={toggleTheme}/>
+                    <Board/>
+                </div>
+            </ThemeProvider>
+        </DndProvider>
     );
 }
