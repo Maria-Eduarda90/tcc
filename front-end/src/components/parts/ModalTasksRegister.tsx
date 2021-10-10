@@ -54,12 +54,12 @@ export const ModalTasksRegister = () => {
                         </div>
                         <div className="containerCheckbox">
                             <input type="radio" name="radio" id="radio" />
-                            <h1>prioridade</h1>
+                            <h1>Prioridade</h1>
                         </div>
                     </div>
 
                     <div className="div-button">
-                        <button className="enter  sendTask">
+                        <button className="enter sendTask">
                             Enviar Tarefa
                         </button>
                     </div>

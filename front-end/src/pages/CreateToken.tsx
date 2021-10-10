@@ -38,7 +38,7 @@ export function CreateToken() {
                     </div>
                 </div>
                 <div className="buttons finish">
-                    <button className="LinkButton">
+                    <button className="LinkButton fontWeight">
                         FINALIZAR
                     </button>
                 </div>

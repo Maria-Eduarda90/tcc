@@ -9,9 +9,10 @@
     --blue-dark: #114C74;
     --brown: #727475;
     --grey: #CBD2D9; 
-    --grey-brown: #78808D;
+    --grey-90: #78808D;
     --grey-brown: #A4AAB4;
     --grey-100: #EDEDF3;
+    --grey-ccc: #CCCCCC;
     --color-card: #35393B;
 
     --green: #9EC183;
@@ -66,6 +67,10 @@ button{
     color: var(--blue-dark);
     font-weight: 500;
     padding: 0.75rem 1.62rem;
+}
+
+.fontWeight {
+    font-weight: 700;
 }
 
 @media(max-width: 1000px){

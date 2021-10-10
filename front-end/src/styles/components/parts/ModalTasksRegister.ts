@@ -29,7 +29,7 @@ export const Container = styled.div `
     }
 
     .modal h1 {
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.title};
     }
 
     #description {
@@ -41,7 +41,7 @@ export const Container = styled.div `
         border-radius: 8px;
         border: 1px solid var(--grey-100);
         padding: 1rem;
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.title};
     }
 
     form p {
