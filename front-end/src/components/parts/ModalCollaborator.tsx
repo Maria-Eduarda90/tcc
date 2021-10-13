@@ -85,13 +85,13 @@ const ModalCollaborator: React.FC = () => {
                         <h2>Cadastrar novo colaboradores</h2>
                         <form action="" method="POST">
                             <p>Nome</p>
-                            <input type="text" name="text" id="text" />
+                            <input type="text" name="text" id="text" required/>
 
                             <p>Sobrenome</p>
-                            <input type="text" name="text" id="text" />
+                            <input type="text" name="text" id="text" required/>
 
                             <p>Email</p>
-                            <input type="email" name="email" id="email" />
+                            <input type="email" name="email" id="email" required/>
 
                             <div className="arrow">
                                 <h2>Enviar E-mail de confirmação para cadastro</h2>
