@@ -6,12 +6,14 @@ export const ContainerBoard = Styled.div `
 `;
 
 export const Container = Styled.div `
-    background: #ccc;
+    background: white;
+    border: 1px solid var(--grey-100);
     width: 18.125rem;
     height: 19.68rem;
     border-radius: 8px;
     margin-top: 3rem;
     margin-left: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(200, 200, 222, 0.25);
 
     .title {
         margin-top: 1.5rem;

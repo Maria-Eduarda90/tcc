@@ -93,6 +93,7 @@ export const Container = styled.div `
         margin-right: .5rem;
         border: 1px solid var(--grey-100);
         border-radius: 8px;
+        outline: none;
     }
 
     .title {

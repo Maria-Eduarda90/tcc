@@ -12,6 +12,8 @@ import { ThemeProvider } from 'styled-components';
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 
+import { Container } from '../styles/components/parts/SidebarKanbanboard';
+
 import { Board } from '../components/Board';
 
 export function KanbanBoard() {
@@ -24,11 +26,11 @@ export function KanbanBoard() {
     return(
         <DndProvider backend={HTML5Backend}>
             <ThemeProvider theme={theme}>
-                <div>
+                <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
                     <Board/>
-                </div>
+                </Container>
             </ThemeProvider>
         </DndProvider>
     );

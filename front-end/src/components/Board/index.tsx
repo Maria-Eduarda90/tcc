@@ -1,4 +1,5 @@
 import { Container, ContainerBoard } from './styles';
+import { AddTask } from '../AddTask';
 import Card from '../Card';
 
 export function Board() {
@@ -10,7 +11,9 @@ export function Board() {
                     <div>
                         <Card />
                     </div>
+                    <AddTask/>
                 </div>
+
             </Container>
 
             <Container>

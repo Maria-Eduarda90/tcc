@@ -8,5 +8,6 @@ export default {
         background: '#ffffff',
         text: '#333',
         title: '#424A57',
+        backgroundKanban: '#E5E5E5',
     },
 };

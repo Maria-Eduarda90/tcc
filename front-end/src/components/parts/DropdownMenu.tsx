@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { FiPlus } from "react-icons/fi";
 
 import { RiArrowDownSLine } from 'react-icons/ri';
 
@@ -15,21 +16,26 @@ export const DropdownMenu = () => {
             <div onClick={handleDropdownMenuActive} className="menu-trigger">
                 <RiArrowDownSLine/>
             </div>
-            <nav
-             ref={dropdownRef}
-             className={
-                 `menu ${isActive ? 'active' : 'inactive'}`
-                }>
-                <div>
-                    <div className="imageDropdown">
-                        <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
-                        <p>Alterar foto de perfil</p>
+            <form action="" method="POST">
+                <nav
+                ref={dropdownRef}
+                className={
+                    `menu ${isActive ? 'active' : 'inactive'}`
+                    }>
+                    <div>
+                        <div className="imageDropdown">
+                            <label htmlFor="image[]" className="new-image">
+                                <FiPlus size={30} color="#15b6d6" />
+                            </label>
+                            <input multiple type="file" id="image[]" />
+                            <p>Alterar foto de perfil</p>
+                        </div>
+                        <div className="DropdownButton">
+                            <button>Salvar</button>
+                        </div>
                     </div>
-                    <div className="DropdownButton">
-                        <button>Salvar</button>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </form>
         </div>
     );
 }
