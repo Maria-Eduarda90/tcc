@@ -33,8 +33,8 @@ export const CadastrarAdmin: React.FC = () => {
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input
                                  type="text" 
-                                 name="text" 
-                                 id="text"
+                                 name="nome"
+                                 id="nome"
                                  onChange={formik.handleChange}
                                  value={formik.values.nome}
                                  />
@@ -44,8 +44,8 @@ export const CadastrarAdmin: React.FC = () => {
                         <div className="input-icons">
                             <div>
                                 <h1>Nome da sua empresa</h1>
-                                <label className="sr-only" htmlFor="text">Nome da empresa</label>
-                                <input type="text" name="text" id="text"
+                                <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
+                                <input type="text" name="nome_da_empresa" id="nome_da_empresa"
                                  onChange={formik.handleChange}
                                  value={formik.values.nome_da_empresa}
                                 />
@@ -55,11 +55,11 @@ export const CadastrarAdmin: React.FC = () => {
                     </div>
 
                     <div className="button">
-                        <Link to="createToken" className="LinkPropsButton register">
+                        <div className="LinkPropsButton register">
                             <button className="continue">
                                 CONTINUAR
                             </button>
-                        </Link>
+                        </div>
                     </div>
                 </form>
             </div>
