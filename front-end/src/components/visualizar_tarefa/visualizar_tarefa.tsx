@@ -16,7 +16,9 @@ interface BodyCardInformation{
 function CardInformation(props: BodyCardInformation){
 
     return(
-        <Styled.Card></Styled.Card>
+        <Styled.Card>
+            <h1>{props.title}</h1>
+        </Styled.Card>
     );
 
 }
@@ -51,8 +53,8 @@ export function Teste() {
                 <input type="file" id="file" />
             </Styled.CommentBoxForm>
             <Styled.CardBoxRender>
-                <CardInformation/>
-                <CardInformation/>
+                <CardInformation title="Minha tarefa"  />
+                <CardInformation title="Nova tarefa" />
             </Styled.CardBoxRender>
         </Styled.Container>
     );
