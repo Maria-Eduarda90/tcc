@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -18,9 +19,14 @@ import { Board } from '../components/Board';
 
 export function KanbanBoard() {
     const [ theme, setTheme ] = usePersistedState('theme', light);
+    const [ index, setIndex ] = useState(1);
 
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
+    }
+
+    function moveCard() {
+        setIndex(index)
     }
 
     return(
@@ -29,7 +35,7 @@ export function KanbanBoard() {
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                    <Board/>
+                    <Board card={index === 1} moveCard={moveCard.bind(null, 1)}/>
                 </Container>
             </ThemeProvider>
         </DndProvider>

@@ -8,15 +8,17 @@ interface PropsCard {
 }
 
 const Card: React.FC = () => {
-    const [{ isDragging }, dragRef] = useDrag({
-        type: "card",
-        collect: monitor => ({
-            isDragging: monitor.isDragging(),
+    const [{ isDragging }, dragRef] = useDrag(()=> ({
+        type: 'card',
+        collect: (monitor) => ({
+          isDragging: monitor.isDragging(),
         }),
-    });
+      }));
+
+      const opacity = isDragging ? 0.4 : 1;
 
     return (
-        <Container ref={dragRef}>
+        <Container ref={dragRef} style={{ opacity }}>
             <div className="containerCard">
                 <h1>Fazer orçamento</h1>
                 <p>
