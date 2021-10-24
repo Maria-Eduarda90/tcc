@@ -5,7 +5,16 @@ import { Link } from 'react-router-dom';
 import '../styles/pages/cadastrarAdmin.css';
 
 export function CadastrarAdmin(){
+    const [name, setName] = useState('');
+    const [nameEmpresa, setNameEmpresa] = useState('');
 
+    const handlerInput = () =>{
+        if(name.length >= 5 && nameEmpresa.length >= 5 ){
+            return true;
+        }
+    }
+
+    var validateInput = handlerInput();
     return(
         <div className="container">
             <div className="img">
@@ -22,21 +31,21 @@ export function CadastrarAdmin(){
                             <div>
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
-                                <input type="text" name="text" id="text" required/>
+                                <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required/>
                             </div>
                         </div>
                         <div className="input-icons">
                             <div>
                                 <h1>Nome da sua empresa</h1>
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
-                                <input type="text" name="text" id="text" required/>
+                                <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required/>
                             </div>
                         </div>
                     </div>
 
                     <div className="button">
                         <Link to="createToken" className="LinkPropsButton register">
-                            <button className="continue">
+                            <button className={validateInput ? "continueCorverde" : "continue"}>
                                 CONTINUAR
                             </button>
                         </Link>
