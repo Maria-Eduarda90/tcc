@@ -44,11 +44,9 @@ export function CadastrarAdmin(){
                     </div>
 
                     <div className="button">
-                        <Link to="createToken" className="LinkPropsButton register">
-                            <button className={validateInput ? "continueCorverde" : "continue"}>
+                            <button className={validateInput ? "continueCorazul" : "continue"} disabled = {!validateInput}>
                                 CONTINUAR
                             </button>
-                        </Link>
                     </div>
                 </form>
             </div>
