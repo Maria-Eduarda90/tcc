@@ -8,13 +8,18 @@ import '../styles/pages/cadastrarAdmin.css';
 import { validations } from '../validation/validation';
 import { ErrorMessage } from '../styles/validationStyled/validationStyled';
 
-export const CadastrarAdmin: React.FC = () => {
-    const formik = useFormik({
-        initialValues: { nome: '', nome_da_empresa: '' },
-        validationSchema: Yup.object(validations),
-        onSubmit: (values) => {},
-    });
+export function CadastrarAdmin(){
+    const [name, setName] = useState('');
+    const [nameEmpresa, setNameEmpresa] = useState('');
 
+
+    const handlerInput = () =>{
+        if(name.length >= 5 && nameEmpresa.length >= 5 ){
+            return true;
+        }
+    }
+
+    var validateInput = handlerInput();
     return(
         <div className="container">
             <div className="img">
@@ -31,35 +36,26 @@ export const CadastrarAdmin: React.FC = () => {
                             <div>
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
-                                <input
-                                 type="text" 
-                                 name="nome"
-                                 id="nome"
-                                 onChange={formik.handleChange}
-                                 value={formik.values.nome}
-                                 />
+                                <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required/>
                             </div>
                             {formik.errors.nome && formik.touched.nome && <ErrorMessage>{formik.errors.nome}</ErrorMessage>}
                         </div>
                         <div className="input-icons">
                             <div>
                                 <h1>Nome da sua empresa</h1>
-                                <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
-                                <input type="text" name="nome_da_empresa" id="nome_da_empresa"
-                                 onChange={formik.handleChange}
-                                 value={formik.values.nome_da_empresa}
-                                />
+                                <label className="sr-only" htmlFor="text">Nome da empresa</label>
+                                <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required/>
                             </div>
                             {formik.errors.nome_da_empresa && formik.touched.nome_da_empresa && <ErrorMessage>{formik.errors.nome_da_empresa}</ErrorMessage>}
                         </div>
                     </div>
 
                     <div className="button">
-                        <div className="LinkPropsButton register">
-                            <button className="continue">
+                        <Link to="createToken" className="LinkPropsButton register">
+                            <button className={validateInput ? "continueCorverde" : "continue"}>
                                 CONTINUAR
                             </button>
-                        </div>
+                        </Link>
                     </div>
                 </form>
             </div>
