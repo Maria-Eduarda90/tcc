@@ -75,9 +75,6 @@ input{
     margin-top: 2rem;
 }
 
-button:hover {
-    filter: brightness(1.2);
-}
 
 @media(max-width: 500px){
     .container-form{
