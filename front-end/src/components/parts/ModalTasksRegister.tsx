@@ -33,13 +33,17 @@ export const ModalTasksRegister = () => {
                 </div>
                 <form action="" method="POST">
                     <div className="title">
-                        <p>Titulo da tarefa</p>
-                        <input type="text" id="description" required/>
+                        <fieldset>
+                            <legend>Titulo da tarefa</legend>
+                            <input type="text" id="description" required/>
+                        </fieldset>
                     </div>
 
                     <div className="title">
-                        <p>Descrição completa da tarefa</p>
-                        <textarea name="description" id="description" required></textarea>
+                        <fieldset>
+                            <legend>Descrição completa da tarefa</legend>
+                            <textarea name="description" id="description" required></textarea>
+                        </fieldset>
                     </div>
 
                     <div className="ContainerDescription">
@@ -47,19 +51,21 @@ export const ModalTasksRegister = () => {
                             <div  className="image">
                                 <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
                             </div>
-                            <div>
-                                <p>Responsavel da tarefa</p>
-                                <input type="search" name="search" id="description" required />
+                            <div className="searchResponsible">
+                                <fieldset>
+                                    <legend>Responsavel da tarefa</legend>
+                                    <input type="search" name="search" id="description" required />
+                                </fieldset>
                             </div>
                         </div>
                         <div className="containerCheckbox">
-                            <input type="radio" name="radio" id="radio" />
-                            <h1>prioridade</h1>
+                            <input type="number" name="number" id="number" required/>
+                            <h1>Prioridade</h1>
                         </div>
                     </div>
 
                     <div className="div-button">
-                        <button className="enter  sendTask">
+                        <button className="enter sendTask">
                             Enviar Tarefa
                         </button>
                     </div>

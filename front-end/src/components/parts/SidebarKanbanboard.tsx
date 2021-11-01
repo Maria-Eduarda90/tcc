@@ -9,7 +9,6 @@ import { SidebarData } from '../parts/SideMenuData'
 import { DropdownMenu } from '../parts/DropdownMenu';
 
 import '../../styles/global.css';
-import '../../styles/components/parts/SidebarKanbanboard.css';
 import { ThemeContext } from 'styled-components';
 
 import { ContainerSidebar } from '../../styles/components/sidebar';
