@@ -17,4 +17,26 @@
 .finish button{
     margin-top: 2rem; 
     margin-right: -15rem;
+    line-height: 1.31rem;
+    background-color: #DDD;
+    color: #999;
+    border: none;
+    cursor: no-drop;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.75rem 3.5rem;
+    background-position: 96%;
+    
+}
+
+.finishAzul button{
+    margin-top: 2rem; 
+    margin-right: -15rem;
+    line-height: 1.31rem;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.75rem 3.5rem;
+    background-position: 96%;
+    color: white;
+    background-color: var(--blue-dark);
 }
