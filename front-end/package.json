@@ -11,9 +11,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "antd": "^4.16.13",
+    "@unform/core": "^2.1.6",
+    "@unform/web": "^2.1.6",
     "formik": "^2.2.9",
-    "go-try": "^1.0.0",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-burger-menu": "^3.0.6",
@@ -31,7 +31,7 @@
     "styled-components": "^5.3.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

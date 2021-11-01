@@ -20,6 +20,12 @@ export function CadastrarAdmin() {
     }
     const validateInput = handlerInput();
 
+    const formik = useFormik({
+        initialValues: { nome: '', nome_da_empresa: '' },
+        validationSchema: Yup.object(validations),
+        onSubmit: (values) => {},
+    });
+
     const testeOnclickDisabled = () => {
         console.log("entrou");
     }
@@ -41,6 +47,13 @@ export function CadastrarAdmin() {
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required />
+                                <input
+                                 type="text" 
+                                 name="nome"
+                                 id="nome"
+                                 onChange={formik.handleChange}
+                                 value={formik.values.nome}
+                                 />
                             </div>
                             {formik.errors.nome && formik.touched.nome && <ErrorMessage>{formik.errors.nome}</ErrorMessage>}
                         </div>
@@ -49,6 +62,11 @@ export function CadastrarAdmin() {
                                 <h1>Nome da sua empresa</h1>
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
                                 <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required />
+                                <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
+                                <input type="text" name="nome_da_empresa" id="nome_da_empresa"
+                                 onChange={formik.handleChange}
+                                 value={formik.values.nome_da_empresa}
+                                />
                             </div>
                             {formik.errors.nome_da_empresa && formik.touched.nome_da_empresa && <ErrorMessage>{formik.errors.nome_da_empresa}</ErrorMessage>}
                         </div>

@@ -17,7 +17,6 @@ import dark from '../styles/themes/dark';
 
 import { Container } from '../styles/components/parts/SidebarKanbanboard';
 
-import { Board } from '../components/Board';
 
 export function KanbanBoard() {
     const [theme, setTheme] = usePersistedState('theme', light);
@@ -27,20 +26,12 @@ export function KanbanBoard() {
         setTheme(theme.title === 'light' ? dark : light);
     }
 
-    // function moveCard() {
-    //     setIndex(index)
-    // }
-
-    return (
-        // <DndProvider backend={HTML5Backend}>
-        <ThemeProvider theme={theme}>
-            <Container>
-                <GlobalStyle/>
-                <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                <Taskboard/>
-                {/* <Board card={index === 1} moveCard={moveCard.bind(null, 1)}/> */}
-            </Container>
-        </ThemeProvider>
-    // </DndProvider>
+    return(
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <GlobalStyle/>
+                    <Sidebarkanbanboard toggleTheme={toggleTheme}/>
+                </Container>
+            </ThemeProvider>
     );
 }
