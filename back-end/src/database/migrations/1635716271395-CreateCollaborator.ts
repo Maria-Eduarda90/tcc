@@ -15,6 +15,7 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                     {
                         name: "email",
                         type: "varchar",
+                        isUnique: true,
                     },
                     {
                         name: "password",
