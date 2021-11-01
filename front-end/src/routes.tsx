@@ -4,7 +4,8 @@ import { Login } from './pages/Login';
 import { CadastrarAdmin } from './pages/CadastrarAdmin';
 import { CreateToken } from './pages/CreateToken';
 import { Dashboard } from './pages/Dashboard';
-import { KanbanBoard } from './pages/KanbanBoard';
+import { KanbanBoard } from './pages/kanbanBoard';
+import { Teste } from './components/visualizar_tarefa/visualizar_tarefa';
 
 export function Routes(){
     return(
