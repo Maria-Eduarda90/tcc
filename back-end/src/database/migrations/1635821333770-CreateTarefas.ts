@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateCollaborator1635716271395 implements MigrationInterface {
+export class CreateTarefas1635821333770 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "collaborator",
+                name: "tarefas",
                 columns: [
                     {
                         name: "id",
@@ -13,27 +13,21 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: "name",
-                        type: "varchar"
-                    },
-                    {
-                        name: "sobrenome",
+                        name: "titulo",
                         type: "varchar",
                     },
                     {
-                        name: "email",
-                        type: "varchar",
-                        isUnique: true,
-                    },
-                    {
-                        name: "password",
+                        name: "descricao",
                         type: "varchar",
                     },
                     {
-                        name: "created_at",
-                        type: "timestamp",
-                        default: "now()",
+                        name: "propriedade_tarefa",
+                        type: "varchar",
                     },
+                    {
+                        name: "comentario",
+                        type: "varchar",
+                    }
                 ]
             })
         )
@@ -41,6 +35,7 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
     //TODO: Fazer as relações das taredas
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("collaborator");
+        await queryRunner.dropTable("tarefas")
     }
+
 }
