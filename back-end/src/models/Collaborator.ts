@@ -7,6 +7,12 @@ class Collaborator {
     readonly id: string;
 
     @Column()
+    name: string;
+
+    @Column()
+    sobrenome: string;
+
+    @Column()
     email: string;
 
     @Column()

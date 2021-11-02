@@ -9,7 +9,7 @@ export class CreateImages1635824361722 implements MigrationInterface {
                 columns: [
                     {
                         name: "id",
-                        type: "interger",
+                        type: "integer",
                         unsigned: true,
                         isPrimary: true,
                         isGenerated: true,

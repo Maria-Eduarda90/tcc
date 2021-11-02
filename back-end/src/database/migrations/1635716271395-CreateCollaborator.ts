@@ -45,7 +45,7 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "ImagesAdmistrador",
+                        name: "Admistrador",
                         columnNames: ["administrador_id"],
                         referencedTableName: 'admistrador',
                         referencedColumnNames: ['id'],
@@ -53,7 +53,7 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "AquivosTarefa",
+                        name: "Tarefa",
                         columnNames: ["tarefas_id"],
                         referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],
