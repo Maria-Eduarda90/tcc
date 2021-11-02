@@ -27,12 +27,37 @@ export class CreateTarefas1635821333770 implements MigrationInterface {
                     {
                         name: "comentario",
                         type: "varchar",
-                    }
+                    },
+                    {
+                        name: "administrador_id",
+                        type: "integer"
+                    },
+                    {
+                        name: "collaborator_id",
+                        type: "integer",
+                    }, 
+                ],
+                foreignKeys: [
+                    {
+                        name: "tarefasAdmistrador",
+                        columnNames: ["administrador_id"],
+                        referencedTableName: 'admistrador',
+                        referencedColumnNames: ['id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'CASCADE',
+                    },
+                    {
+                        name: "tarefasCollaborator",
+                        columnNames: ["collaborator_id"],
+                        referencedTableName: 'collaborator',
+                        referencedColumnNames: ['id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'CASCADE',
+                    },
                 ]
             })
         )
     }
-    //TODO: Fazer as relações das taredas
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("tarefas")

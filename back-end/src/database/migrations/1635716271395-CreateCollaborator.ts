@@ -34,11 +34,36 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     },
+                    {
+                        name: "tarefas_id",
+                        type: "integer"
+                    },
+                    {
+                        name: "administrador_id",
+                        type: "integer"
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: "ImagesAdmistrador",
+                        columnNames: ["administrador_id"],
+                        referencedTableName: 'admistrador',
+                        referencedColumnNames: ['id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'CASCADE',
+                    },
+                    {
+                        name: "AquivosTarefa",
+                        columnNames: ["tarefas_id"],
+                        referencedTableName: 'tarefas',
+                        referencedColumnNames: ['id'],
+                        onUpdate: 'CASCADE',
+                        onDelete: 'CASCADE',
+                    },
                 ]
             })
         )
     }
-    //TODO: Fazer as relações das taredas
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("collaborator");

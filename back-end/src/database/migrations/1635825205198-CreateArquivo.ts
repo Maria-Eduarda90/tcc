@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateArquivo1635825205198 implements MigrationInterface {
 
@@ -7,22 +7,22 @@ export class CreateArquivo1635825205198 implements MigrationInterface {
             new Table({
                 name: "arquivos",
                 columns: [
-                   { 
-                    name: "id",
-                    type: "integer",
-                    unsigned: true,
-                    isPrimary: true,
-                    isGenerated: true,
-                    generationStrategy: 'increment'
-                 },
-                 {
-                     name: "path",
-                     type: "varchar"
-                 },
-                 {
-                     name: "tarefas_id",
-                     type: "integer"
-                 }
+                    {
+                        name: "id",
+                        type: "integer",
+                        unsigned: true,
+                        isPrimary: true,
+                        isGenerated: true,
+                        generationStrategy: 'increment'
+                    },
+                    {
+                        name: "path",
+                        type: "varchar"
+                    },
+                    {
+                        name: "tarefas_id",
+                        type: "integer"
+                    }
                 ],
                 foreignKeys: [
                     {
