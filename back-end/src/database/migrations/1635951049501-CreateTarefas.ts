@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateTarefas1635821333770 implements MigrationInterface {
+export class CreateTarefas1635951049501 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -14,7 +14,7 @@ export class CreateTarefas1635821333770 implements MigrationInterface {
                     },
                     {
                         name: "titulo",
-                        type: "varchar",
+                        type: "varchar"
                     },
                     {
                         name: "descricao",
@@ -29,8 +29,13 @@ export class CreateTarefas1635821333770 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
                         name: "administrador_id",
-                        type: "integer"
+                        type: "integer",
                     },
                     {
                         name: "collaborator_id",
@@ -39,9 +44,9 @@ export class CreateTarefas1635821333770 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "tarefasAdmistrador",
+                        name: "tarefasAdministrador",
                         columnNames: ["administrador_id"],
-                        referencedTableName: 'admistrador',
+                        referencedTableName: 'administrador',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
@@ -56,7 +61,7 @@ export class CreateTarefas1635821333770 implements MigrationInterface {
                     },
                 ]
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

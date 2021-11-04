@@ -20,13 +20,18 @@ export class CreateArquivo1635825205198 implements MigrationInterface {
                         type: "varchar"
                     },
                     {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
                         name: "tarefas_id",
                         type: "integer"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "AquivosTarefa",
+                        name: "ArquivosTarefas",
                         columnNames: ["tarefas_id"],
                         referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],

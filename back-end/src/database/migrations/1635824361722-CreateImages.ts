@@ -20,6 +20,11 @@ export class CreateImages1635824361722 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
                         name: "collaborator_id",
                         type: "integer",
                     },
@@ -38,9 +43,9 @@ export class CreateImages1635824361722 implements MigrationInterface {
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "ImagesAdmistrador",
+                        name: "ImagesAdministrador",
                         columnNames: ["administrador_id"],
-                        referencedTableName: 'admistrador',
+                        referencedTableName: 'administrador',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',

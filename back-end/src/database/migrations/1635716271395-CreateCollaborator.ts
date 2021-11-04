@@ -45,7 +45,7 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "Admistrador",
+                        name: "Administrador",
                         columnNames: ["administrador_id"],
                         referencedTableName: 'admistrador',
                         referencedColumnNames: ['id'],
