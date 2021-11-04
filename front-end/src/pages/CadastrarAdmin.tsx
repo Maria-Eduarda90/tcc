@@ -9,16 +9,20 @@ export function CadastrarAdmin() {
     const [name, setName] = useState('');
     const [nameEmpresa, setNameEmpresa] = useState('');
 
-    const handlerInput = () => {
-        if (name.length >= 5 && nameEmpresa.length >= 5) {
-            return true;
-        }
+    const validateName = name.length >= 5;
+    const validateNameEmpresa = nameEmpresa.length >= 5;
+
+    const validateCampos = () => {
+        if (validateNameEmpresa && validateName)
+        return true;
     }
-    const validateInput = handlerInput();
+
+    var validateCamposButton = validateCampos();
 
     
 
-    
+
+
     return (
         <div className="container">
             <div className="img">
@@ -36,7 +40,7 @@ export function CadastrarAdmin() {
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required />
-                                
+                                {validateName ? null : <p><span>O seu nome precisa ter no mínimo 5 characters</span></p> }
                             </div>
                         </div>
                         <div className="input-icons">
@@ -45,6 +49,7 @@ export function CadastrarAdmin() {
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
                                 <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required />
                                 <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
+                                {validateNameEmpresa ? null : <p><span>O nome da empresa precisa ter no mínimo 5 characters</span></p> }
                                
                             </div>
                         </div>
@@ -52,7 +57,7 @@ export function CadastrarAdmin() {
 
                     <div className="button">
                         <Link to="createToken" className="LinkPropsButton register">
-                            <button className={validateInput ? "continueCorazul" : "continue"} disabled={!validateInput}>
+                            <button className={validateCamposButton ? "continueCorazul" : "continue"} disabled={!validateCampos}>
                                 CONTINUAR
                             </button>
                         </Link>
