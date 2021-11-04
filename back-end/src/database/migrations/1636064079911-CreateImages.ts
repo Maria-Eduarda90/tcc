@@ -1,37 +1,23 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateAdministrador1635821278736 implements MigrationInterface {
+export class CreateImages1636064079911 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "administrador",
+                name: "images",
                 columns: [
                     {
                         name: "id",
-                        type: "uuid",
+                        type: "integer",
+                        unsigned: true,
                         isPrimary: true,
-                    },
-
-                    {
-                        name: "name",
-                        type: "varchar"
+                        isGenerated: true,
+                        generationStrategy: 'increment'
                     },
                     {
-                        name: "nome_empresa",
+                        name: "path",
                         type: "varchar",
-                    },
-                    {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-                    },
-                    {
-                        name: "token",
-                        type: "varchar"
                     },
                     {
                         name: "created_at",
@@ -43,13 +29,13 @@ export class CreateAdministrador1635821278736 implements MigrationInterface {
                         type: "integer",
                     },
                     {
-                        name: "tarefas_id",
+                        name: "administrador_id",
                         type: "integer"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "collaborator",
+                        name: "ImagesCollaborator",
                         columnNames: ["collaborator_id"],
                         referencedTableName: 'collaborator',
                         referencedColumnNames: ['id'],
@@ -57,20 +43,20 @@ export class CreateAdministrador1635821278736 implements MigrationInterface {
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "tarefas",
-                        columnNames: ["tarefas_id"],
-                        referencedTableName: 'tarefas',
+                        name: "ImagesAdministrador",
+                        columnNames: ["administrador_id"],
+                        referencedTableName: 'administrador',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
-                    },
+                    }
                 ]
             })
-        );
+        )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("administrador")
+        await queryRunner.dropTable('images');
     }
 
 }

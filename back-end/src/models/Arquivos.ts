@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn,OneToMany, JoinColumn  } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn,OneToMany, JoinColumn, CreateDateColumn  } from 'typeorm';
 import { Tarefas } from './Tarefas'
 
-@Entity("Arquivos")
+@Entity("arquivos")
 class Arquivos{
     @PrimaryGeneratedColumn('increment')
     id: number;
@@ -9,8 +9,10 @@ class Arquivos{
     @Column()
     path: string;
 
+    @CreateDateColumn()
+    created_at: Date;
+
     @OneToMany(() => Tarefas, tarefas => tarefas.arquivos)
-    @JoinColumn({name: 'tarefas_id'})
     tarefas: Tarefas;
 }
 

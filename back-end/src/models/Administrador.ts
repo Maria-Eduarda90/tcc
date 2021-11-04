@@ -1,12 +1,11 @@
-import { Column, Entity, PrimaryColumn , OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Column, Entity, PrimaryColumn , OneToOne, JoinColumn, OneToMany, CreateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import {Images} from './Images'
 import { Collaborator } from './Collaborator';
 import { Tarefas } from './Tarefas'
 
-@Entity("Admistrador")
+@Entity("administrador")
 class Administrador{
-
     @PrimaryColumn()
     readonly id: string;
 
@@ -25,24 +24,23 @@ class Administrador{
     @Column()
     token: string;
 
+    @CreateDateColumn()
+    created_at: Date;
+
     @OneToOne(() => Images, images => images.administrador, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'images_id'})
     images: Images;
 
     @OneToMany(() => Collaborator, collaborator => collaborator.administrador, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'collaborator_id'})
     collaborator: Collaborator[];
 
     @OneToOne(() => Tarefas, tarefas => tarefas.administrador, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'tarefa_id'})
     tarefas: Tarefas;
-
 
     constructor() {
         if(!this.id){

@@ -1,33 +1,37 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateCollaborator1635716271395 implements MigrationInterface {
+export class CreateAdministrador1636063952695 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "collaborator",
+                name: "administrador",
                 columns: [
                     {
                         name: "id",
                         type: "uuid",
                         isPrimary: true,
                     },
+        
                     {
                         name: "name",
                         type: "varchar"
                     },
                     {
-                        name: "sobrenome",
+                        name: "nome_empresa",
                         type: "varchar",
                     },
                     {
                         name: "email",
                         type: "varchar",
-                        isUnique: true,
                     },
                     {
                         name: "password",
                         type: "varchar",
+                    },
+                    {
+                        name: "token",
+                        type: "varchar"
                     },
                     {
                         name: "created_at",
@@ -35,25 +39,25 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                         default: "now()",
                     },
                     {
-                        name: "tarefas_id",
-                        type: "integer"
+                        name: "collaborator_id",
+                        type: "integer",
                     },
                     {
-                        name: "administrador_id",
+                        name: "tarefas_id",
                         type: "integer"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "Administrador",
-                        columnNames: ["administrador_id"],
-                        referencedTableName: 'admistrador',
+                        name: "collaborator",
+                        columnNames: ["collaborator_id"],
+                        referencedTableName: 'collaborator',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "Tarefa",
+                        name: "tarefas",
                         columnNames: ["tarefas_id"],
                         referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],
@@ -62,10 +66,11 @@ export class CreateCollaborator1635716271395 implements MigrationInterface {
                     },
                 ]
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("collaborator");
+        await queryRunner.dropTable("administrador")
     }
+
 }

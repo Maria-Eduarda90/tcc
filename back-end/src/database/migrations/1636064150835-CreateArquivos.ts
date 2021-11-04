@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateImages1635824361722 implements MigrationInterface {
+export class CreateArquivos1636064150835 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "images",
+                name: "arquivos",
                 columns: [
                     {
                         name: "id",
@@ -17,7 +17,7 @@ export class CreateImages1635824361722 implements MigrationInterface {
                     },
                     {
                         name: "path",
-                        type: "varchar",
+                        type: "varchar"
                     },
                     {
                         name: "created_at",
@@ -25,38 +25,26 @@ export class CreateImages1635824361722 implements MigrationInterface {
                         default: "now()",
                     },
                     {
-                        name: "collaborator_id",
-                        type: "integer",
-                    },
-                    {
-                        name: "administrador_id",
+                        name: "tarefas_id",
                         type: "integer"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "ImagesCollaborator",
-                        columnNames: ["collaborator_id"],
-                        referencedTableName: 'collaborator',
+                        name: "ArquivosTarefas",
+                        columnNames: ["tarefas_id"],
+                        referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
                     },
-                    {
-                        name: "ImagesAdministrador",
-                        columnNames: ["administrador_id"],
-                        referencedTableName: 'administrador',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'CASCADE',
-                    }
                 ]
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('images');
+        await queryRunner.dropTable("arquivos");
     }
 
 }

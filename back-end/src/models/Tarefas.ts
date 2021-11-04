@@ -24,19 +24,16 @@ class Tarefas {
     @OneToOne(() => Arquivos, arquivos => arquivos.tarefas, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'arquivos_id'})
     arquivos: Arquivos;
 
     @ManyToOne(() => Collaborator, collaborator => collaborator.tarefas, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'collaborator_id'})
-    collaborator: Collaborator[];
+    collaborator: Collaborator;
 
     @OneToOne(() => Administrador, administrador => administrador.tarefas, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'administrador_id'})
     administrador: Administrador;
 
     constructor() {

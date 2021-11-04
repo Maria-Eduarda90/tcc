@@ -22,24 +22,21 @@ class Collaborator {
     password: string;
 
     @CreateDateColumn()
-    create_at: Date;
+    created_at: Date;
 
     @OneToOne(() => Images, images => images.collaborator, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'iamges_id'})
     images: Images;
 
     @OneToOne(() => Administrador, administrador => administrador.collaborator, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'administrador_id'})
     administrador: Administrador;
 
     @OneToMany(() => Tarefas, tarefas => tarefas.collaborator, {
         cascade: ['insert', 'update']
     })
-    @JoinColumn({name: 'tarefa_id'})
     tarefas: Tarefas;
 
     constructor() {
