@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn,OneToMany, JoinColumn, CreateDateColumn  } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, CreateDateColumn  } from 'typeorm';
 import { Tarefas } from './Tarefas'
 
 @Entity("arquivos")
@@ -12,7 +12,7 @@ class Arquivos{
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToMany(() => Tarefas, tarefas => tarefas.arquivos)
+    @OneToOne(() => Tarefas, tarefas => tarefas.arquivos)
     tarefas: Tarefas;
 }
 

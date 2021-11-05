@@ -21,6 +21,12 @@ class Collaborator {
     @Column()
     password: string;
 
+    @Column()
+    administrador_id: number;
+
+    @Column()
+    tarefas_id: number;
+
     @CreateDateColumn()
     created_at: Date;
 

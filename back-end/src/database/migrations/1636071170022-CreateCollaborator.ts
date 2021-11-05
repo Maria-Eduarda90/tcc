@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateCollaborator1636063836184 implements MigrationInterface {
+export class CreateCollaborator1636071170022 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -47,13 +47,13 @@ export class CreateCollaborator1636063836184 implements MigrationInterface {
                     {
                         name: "Administrador",
                         columnNames: ["administrador_id"],
-                        referencedTableName: 'admistrador',
+                        referencedTableName: 'administrador',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "Tarefa",
+                        name: "Tarefas",
                         columnNames: ["tarefas_id"],
                         referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],

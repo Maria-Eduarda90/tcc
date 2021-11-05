@@ -27,6 +27,12 @@ class Administrador{
     @CreateDateColumn()
     created_at: Date;
 
+    @Column()
+    collaborator_id: number;
+
+    @Column()
+    tarefas_id: number;
+
     @OneToOne(() => Images, images => images.administrador, {
         cascade: ['insert', 'update']
     })
@@ -37,7 +43,7 @@ class Administrador{
     })
     collaborator: Collaborator[];
 
-    @OneToOne(() => Tarefas, tarefas => tarefas.administrador, {
+    @OneToMany(() => Tarefas, tarefas => tarefas.administrador, {
         cascade: ['insert', 'update']
     })
     tarefas: Tarefas;

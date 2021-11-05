@@ -49,7 +49,7 @@ export class CreateAdministrador1636063952695 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "collaborator",
+                        name: "AdministradorOfCollaborator",
                         columnNames: ["collaborator_id"],
                         referencedTableName: 'collaborator',
                         referencedColumnNames: ['id'],
@@ -57,7 +57,7 @@ export class CreateAdministrador1636063952695 implements MigrationInterface {
                         onDelete: 'CASCADE',
                     },
                     {
-                        name: "tarefas",
+                        name: "AdministradorTarefas",
                         columnNames: ["tarefas_id"],
                         referencedTableName: 'tarefas',
                         referencedColumnNames: ['id'],

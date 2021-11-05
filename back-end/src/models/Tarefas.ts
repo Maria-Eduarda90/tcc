@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, OneToOne, JoinColumn, ManyToOne  } from 'typeorm';
+import { Column, Entity, PrimaryColumn, OneToOne, JoinColumn, ManyToOne, OneToMany  } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Arquivos } from './Arquivos'
 import { Collaborator } from './Collaborator'
@@ -26,12 +26,12 @@ class Tarefas {
     })
     arquivos: Arquivos;
 
-    @ManyToOne(() => Collaborator, collaborator => collaborator.tarefas, {
+    @OneToMany(() => Collaborator, collaborator => collaborator.tarefas, {
         cascade: ['insert', 'update']
     })
     collaborator: Collaborator;
 
-    @OneToOne(() => Administrador, administrador => administrador.tarefas, {
+    @OneToMany(() => Administrador, administrador => administrador.tarefas, {
         cascade: ['insert', 'update']
     })
     administrador: Administrador;
