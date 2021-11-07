@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, CreateDateColumn  } from 'typeorm';
-import { Tarefas } from './Tarefas'
+// import { Tarefas } from './Tarefas'
 
 @Entity("arquivos")
 class Arquivos{

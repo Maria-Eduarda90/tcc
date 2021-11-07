@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn, CreateDateColumn } from 'typeorm';
-import { Administrador } from './Administrador'
-import { Collaborator } from './Collaborator';
+// import { Administrador } from './Administrador'
+// import { Collaborator } from './Collaborator';
 
 @Entity("images")
 class Images {

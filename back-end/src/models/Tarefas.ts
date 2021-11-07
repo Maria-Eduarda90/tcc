@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn, OneToOne, JoinColumn, ManyToOne, OneToMany  } from 'typeorm';
+import { Column, Entity, PrimaryColumn, OneToOne, JoinColumn, ManyToOne, OneToMany, CreateDateColumn  } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { Arquivos } from './Arquivos'
-import { Collaborator } from './Collaborator'
-import { Administrador } from './Administrador'
+// import { Arquivos } from './Arquivos'
+// import { Collaborator } from './Collaborator'
+// import { Administrador } from './Administrador'
 
 @Entity("tarefas")
 class Tarefas {
@@ -16,10 +16,13 @@ class Tarefas {
     descricao: string;
 
     @Column()
-    propriedade_tarefa: string;
+    propriedade_tarefa: number;
     
     @Column()
     comentario: string;
+    
+    @CreateDateColumn()
+    created_at: Date;
 
     // @OneToOne(() => Arquivos, arquivos => arquivos.tarefas, {
     //     cascade: ['insert', 'update']
@@ -38,7 +41,7 @@ class Tarefas {
 
     constructor() {
         if(!this.id){
-            this.id == uuid();
+            this.id = uuid();
         }
     }
 }
