@@ -12,8 +12,8 @@ class Arquivos{
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToOne(() => Tarefas, tarefas => tarefas.arquivos)
-    tarefas: Tarefas;
+    // @OneToOne(() => Tarefas, tarefas => tarefas.arquivos)
+    // tarefas: Tarefas;
 }
 
 export { Arquivos }

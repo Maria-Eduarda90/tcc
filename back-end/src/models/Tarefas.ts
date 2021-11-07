@@ -21,20 +21,20 @@ class Tarefas {
     @Column()
     comentario: string;
 
-    @OneToOne(() => Arquivos, arquivos => arquivos.tarefas, {
-        cascade: ['insert', 'update']
-    })
-    arquivos: Arquivos;
+    // @OneToOne(() => Arquivos, arquivos => arquivos.tarefas, {
+    //     cascade: ['insert', 'update']
+    // })
+    // arquivos: Arquivos;
 
-    @OneToMany(() => Collaborator, collaborator => collaborator.tarefas, {
-        cascade: ['insert', 'update']
-    })
-    collaborator: Collaborator;
+    // @OneToMany(() => Collaborator, collaborator => collaborator.tarefas, {
+    //     cascade: ['insert', 'update']
+    // })
+    // collaborator: Collaborator;
 
-    @OneToMany(() => Administrador, administrador => administrador.tarefas, {
-        cascade: ['insert', 'update']
-    })
-    administrador: Administrador;
+    // @OneToMany(() => Administrador, administrador => administrador.tarefas, {
+    //     cascade: ['insert', 'update']
+    // })
+    // administrador: Administrador;
 
     constructor() {
         if(!this.id){

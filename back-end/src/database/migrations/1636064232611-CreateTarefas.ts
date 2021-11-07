@@ -18,15 +18,15 @@ export class CreateTarefas1636064232611 implements MigrationInterface {
                     },
                     {
                         name: "descricao",
-                        type: "varchar",
+                        type: "text",
                     },
                     {
                         name: "propriedade_tarefa",
-                        type: "varchar",
+                        type: "decimal",
                     },
                     {
                         name: "comentario",
-                        type: "varchar",
+                        type: "text",
                     },
                     {
                         name: "created_at",

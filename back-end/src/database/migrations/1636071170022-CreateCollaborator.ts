@@ -34,33 +34,33 @@ export class CreateCollaborator1636071170022 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     },
-                    {
-                        name: "tarefas_id",
-                        type: "integer"
-                    },
-                    {
-                        name: "administrador_id",
-                        type: "integer"
-                    }
+                    // {
+                    //     name: "tarefas_id",
+                    //     type: "integer"
+                    // },
+                    // {
+                    //     name: "administrador_id",
+                    //     type: "integer"
+                    // }
                 ],
-                foreignKeys: [
-                    {
-                        name: "Administrador",
-                        columnNames: ["administrador_id"],
-                        referencedTableName: 'administrador',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'CASCADE',
-                    },
-                    {
-                        name: "Tarefas",
-                        columnNames: ["tarefas_id"],
-                        referencedTableName: 'tarefas',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'CASCADE',
-                    },
-                ]
+                // foreignKeys: [
+                //     {
+                //         name: "Administrador",
+                //         columnNames: ["administrador_id"],
+                //         referencedTableName: 'administrador',
+                //         referencedColumnNames: ['id'],
+                //         onUpdate: 'CASCADE',
+                //         onDelete: 'CASCADE',
+                //     },
+                //     {
+                //         name: "Tarefas",
+                //         columnNames: ["tarefas_id"],
+                //         referencedTableName: 'tarefas',
+                //         referencedColumnNames: ['id'],
+                //         onUpdate: 'CASCADE',
+                //         onDelete: 'CASCADE',
+                //     },
+                // ]
             })
         )
     }

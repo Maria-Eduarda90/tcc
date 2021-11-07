@@ -38,33 +38,33 @@ export class CreateAdministrador1636063952695 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     },
-                    {
-                        name: "collaborator_id",
-                        type: "integer",
-                    },
-                    {
-                        name: "tarefas_id",
-                        type: "integer"
-                    }
+                    // {
+                    //     name: "collaborator_id",
+                    //     type: "integer",
+                    // },
+                    // {
+                    //     name: "tarefas_id",
+                    //     type: "integer"
+                    // }
                 ],
-                foreignKeys: [
-                    {
-                        name: "AdministradorOfCollaborator",
-                        columnNames: ["collaborator_id"],
-                        referencedTableName: 'collaborator',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'CASCADE',
-                    },
-                    {
-                        name: "AdministradorTarefas",
-                        columnNames: ["tarefas_id"],
-                        referencedTableName: 'tarefas',
-                        referencedColumnNames: ['id'],
-                        onUpdate: 'CASCADE',
-                        onDelete: 'CASCADE',
-                    },
-                ]
+                // foreignKeys: [
+                //     {
+                //         name: "AdministradorOfCollaborator",
+                //         columnNames: ["collaborator_id"],
+                //         referencedTableName: 'collaborator',
+                //         referencedColumnNames: ['id'],
+                //         onUpdate: 'CASCADE',
+                //         onDelete: 'CASCADE',
+                //     },
+                //     {
+                //         name: "AdministradorTarefas",
+                //         columnNames: ["tarefas_id"],
+                //         referencedTableName: 'tarefas',
+                //         referencedColumnNames: ['id'],
+                //         onUpdate: 'CASCADE',
+                //         onDelete: 'CASCADE',
+                //     },
+                // ]
             })
         );
     }

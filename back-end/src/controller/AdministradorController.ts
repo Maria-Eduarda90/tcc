@@ -1,8 +1,27 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Administrador } from '../models/Administrador'
+import { Administrador } from '../models/Administrador';
+import { Collaborator } from '../models/Collaborator';
 
-class AdministradorController {
+class AdministradorController{
+    async index(request: Request, response:Response){
+        const administradorRepository = getRepository(Collaborator);
+
+        const collaborator = await administradorRepository.find()
+
+        return response.json(collaborator);
+    }
+
+    async show(request: Request, response: Response){
+        const { id } = request.params;
+
+        const administradorRepository = getRepository(Collaborator);
+
+        const collaborator = await administradorRepository.findOneOrFail(id);
+
+        return response.json(collaborator);
+    }
+
     async create(request: Request, response: Response) {
         const {
             name,
@@ -10,8 +29,8 @@ class AdministradorController {
             email,
             password,
             token,
-            collaborator_id,
-            tarefas_id,
+            // collaborator_id,
+            // tarefas_id,
         } = request.body;
 
         const administradorRepository = getRepository(Administrador);
@@ -22,8 +41,8 @@ class AdministradorController {
             email,
             password,
             token,
-            collaborator_id,
-            tarefas_id,
+            // collaborator_id,
+            // tarefas_id,
         })
 
         await administradorRepository.save(administrador);

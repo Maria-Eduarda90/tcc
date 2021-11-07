@@ -21,29 +21,29 @@ class Collaborator {
     @Column()
     password: string;
 
-    @Column()
-    administrador_id: number;
+    // @Column()
+    // administrador_id: number;
 
-    @Column()
-    tarefas_id: number;
+    // @Column()
+    // tarefas_id: number;
 
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToOne(() => Images, images => images.collaborator, {
-        cascade: ['insert', 'update']
-    })
-    images: Images;
+    // @OneToOne(() => Images, images => images.collaborator, {
+    //     cascade: ['insert', 'update']
+    // })
+    // images: Images;
 
-    @OneToOne(() => Administrador, administrador => administrador.collaborator, {
-        cascade: ['insert', 'update']
-    })
-    administrador: Administrador;
+    // @OneToOne(() => Administrador, administrador => administrador.collaborator, {
+    //     cascade: ['insert', 'update']
+    // })
+    // administrador: Administrador;
 
-    @OneToMany(() => Tarefas, tarefas => tarefas.collaborator, {
-        cascade: ['insert', 'update']
-    })
-    tarefas: Tarefas;
+    // @OneToMany(() => Tarefas, tarefas => tarefas.collaborator, {
+    //     cascade: ['insert', 'update']
+    // })
+    // tarefas: Tarefas;
 
     constructor() {
         if(!this.id){

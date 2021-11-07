@@ -13,11 +13,11 @@ class Images {
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToMany(() => Administrador, administrador => administrador.images)
-    administrador: Administrador;
+    // @OneToMany(() => Administrador, administrador => administrador.images)
+    // administrador: Administrador;
 
-    @OneToMany(() => Collaborator, collaborator => collaborator.images)
-    collaborator: Collaborator;
+    // @OneToMany(() => Collaborator, collaborator => collaborator.images)
+    // collaborator: Collaborator;
 }
 
 export { Images }

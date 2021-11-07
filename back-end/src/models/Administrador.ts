@@ -27,26 +27,26 @@ class Administrador{
     @CreateDateColumn()
     created_at: Date;
 
-    @Column()
-    collaborator_id: number;
+    // @Column()
+    // collaborator_id: number;
 
-    @Column()
-    tarefas_id: number;
+    // @Column()
+    // tarefas_id: number;
 
-    @OneToOne(() => Images, images => images.administrador, {
-        cascade: ['insert', 'update']
-    })
-    images: Images;
+    // @OneToOne(() => Images, images => images.administrador, {
+    //     cascade: ['insert', 'update']
+    // })
+    // images: Images;
 
-    @OneToMany(() => Collaborator, collaborator => collaborator.administrador, {
-        cascade: ['insert', 'update']
-    })
-    collaborator: Collaborator[];
+    // @OneToMany(() => Collaborator, collaborator => collaborator.administrador, {
+    //     cascade: ['insert', 'update']
+    // })
+    // collaborator: Collaborator[];
 
-    @OneToMany(() => Tarefas, tarefas => tarefas.administrador, {
-        cascade: ['insert', 'update']
-    })
-    tarefas: Tarefas;
+    // @OneToMany(() => Tarefas, tarefas => tarefas.administrador, {
+    //     cascade: ['insert', 'update']
+    // })
+    // tarefas: Tarefas;
 
     constructor() {
         if(!this.id){

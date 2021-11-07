@@ -9,8 +9,8 @@ class CollaboratorController {
             sobrenome,
             email,
             password,
-            administrador_id,
-            tarefas_id
+            // administrador_id,
+            // tarefas_id
         } = request.body;
 
         const collaboratorRepository = getRepository(Collaborator);
@@ -20,8 +20,8 @@ class CollaboratorController {
             sobrenome,
             email,
             password,
-            administrador_id,
-            tarefas_id
+            // administrador_id,
+            // tarefas_id
         })
 
         await collaboratorRepository.save(collaborator);
