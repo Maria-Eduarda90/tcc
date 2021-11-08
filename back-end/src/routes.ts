@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { CollaboratorController } from './controller/CollaboratorController';
+import AdmsController from './controller/AdmsController'
 
 const router = Router();
 
-const collaboratorController = new CollaboratorController;
+router.get('/adm', AdmsController.index)
+router.get('/adm/:id', AdmsController.show)
+router.post('/adm', AdmsController.create)
 
-router.post("/collaborator", collaboratorController.create);
 
 export { router };
