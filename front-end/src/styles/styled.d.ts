@@ -9,6 +9,8 @@ declare module 'styled-components' {
             secundary: string;
             background: string;
             text: string;
+            title: string;
+            backgroundKanban: string;
         }
     }
 }

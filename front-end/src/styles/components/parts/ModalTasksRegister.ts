@@ -29,7 +29,7 @@ export const Container = styled.div `
     }
 
     .modal h1 {
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.title};
     }
 
     #description {
@@ -38,17 +38,22 @@ export const Container = styled.div `
 
         width: 100%;
         outline: none;
-        border-radius: 8px;
-        border: 1px solid var(--grey-100);
+        border: none;
         padding: 1rem;
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.title};
     }
 
-    form p {
+    .title fieldset {
+        border-radius: 8px;
+        border: 1px solid var(--grey-100);
+    }
+
+    form legend {
         color: var(--grey-brown);
         font-size: 0.75rem;
         line-height: 0.875rem;
         font-family: 'Poppins', sans-serif;
+        margin-left: 1rem;
     }
     
     textarea {
@@ -76,14 +81,28 @@ export const Container = styled.div `
         margin-top: .7rem;
     }
 
-    #radio {
-        width: 1.2rem;
-        height: 1.2rem;
+    .containerCheckbox input[type=number]::-webkit-inner-spin-button,
+    .containerCheckbox input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none; 
+        margin: 0;
+    }
+
+    #number {
+        width: 2.31rem;
+        height: 1.81rem;
         margin-right: .5rem;
+        border: 1px solid var(--grey-100);
+        border-radius: 8px;
+        outline: none;
     }
 
     .title {
         margin-top: 1.5rem;
+    }
+
+    .div-button {
+        display: flex;
+        justify-content: flex-end;
     }
 
     .sendTask {

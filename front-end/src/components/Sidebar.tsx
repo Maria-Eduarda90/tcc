@@ -7,6 +7,7 @@ import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './parts/SideMenuData'
 import { DropdownMenu } from './parts/DropdownMenu';
+import  ModalCollaborator  from '../components/parts/ModalCollaborator';
 
 import '../styles/components/sidebar.css';
 import { ThemeContext } from 'styled-components';
@@ -45,11 +46,7 @@ const Sidebar: React.FC<Props> = ({ toggleTheme }) => {
                                 </Link>
                             </li>
 
-                            <Container>
-                                <div className="contributors">
-                                    <button><span><AiIcons.AiOutlineTeam/></span> Colaboradores</button>
-                                </div>
-                            </Container>
+                            <ModalCollaborator/>
                             {/* usando a função map para mapear e criar os elememtos da barra lateral usando os dados em SideBarData.tsx*/}
                             {SidebarData.map((item, index) => {
                                 return (

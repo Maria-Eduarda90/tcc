@@ -2,6 +2,10 @@ import { useState } from 'react';
 import background from '../images/background.png';
 import '../styles/pages/createToken.css';
 
+
+
+import { ErrorMessage } from '../styles/validationStyled/validationStyled';
+
 export function CreateToken() {
     
     const [email, setEmail] = useState('');
@@ -18,18 +22,22 @@ export function CreateToken() {
     }
 
     var validateInput = handlerInput();
+   
+
     return (
         <div className="container">
             <div className="img">
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-            <form  className="form-token" action="" method="POST">
+            <form  className="form-token" action="" method="POST" >
                 <div className="input-div">
                     <div className="div-icon">
                         <h1>Seu email</h1>
                         <label className="sr-only" htmlFor="email">email</label>
                         <input type="email" name="email" id="email" required onChange={e => setEmail(e.target.value)}/>
+                       
+                         
                     </div>
                 </div>
                 <div className="input-icons">
@@ -37,6 +45,7 @@ export function CreateToken() {
                         <h1>Senha</h1>
                         <label className="sr-only" htmlFor="password">senha</label>
                         <input type="password" name="password" id="password" required onChange={e => setSenha(e.target.value)}/>
+                        
                     </div>
                 </div>
                 <div className="input-icons">
@@ -44,6 +53,8 @@ export function CreateToken() {
                         <h1>Confirmar sua senha</h1>
                         <label className="sr-only" htmlFor="password">confirmSenha</label>
                         <input type="password" name="password" id="password" required onChange={e => setConfirmSenha(e.target.value)} />
+                        <label className="sr-only" htmlFor="password">senha</label>
+                       
                     </div>
                 </div>
                 <div className="token">

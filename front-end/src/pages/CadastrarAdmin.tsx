@@ -2,6 +2,7 @@ import { useState } from 'react';
 import background from '../images/background.png';
 import { Link } from 'react-router-dom';
 
+
 import '../styles/pages/cadastrarAdmin.css';
 
 export function CadastrarAdmin() {
@@ -15,10 +16,9 @@ export function CadastrarAdmin() {
     }
     const validateInput = handlerInput();
 
-    const testeOnclickDisabled = () => {
-        console.log("entrou");
-    }
+    
 
+    
     return (
         <div className="container">
             <div className="img">
@@ -36,6 +36,7 @@ export function CadastrarAdmin() {
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required />
+                                
                             </div>
                         </div>
                         <div className="input-icons">
@@ -43,13 +44,15 @@ export function CadastrarAdmin() {
                                 <h1>Nome da sua empresa</h1>
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
                                 <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required />
+                                <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
+                               
                             </div>
                         </div>
                     </div>
 
                     <div className="button">
                         <Link to="createToken" className="LinkPropsButton register">
-                            <button className={validateInput ? "continueCorazul" : "continue"} disabled={!validateInput} onMouseOut={testeOnclickDisabled}>
+                            <button className={validateInput ? "continueCorazul" : "continue"} disabled={!validateInput}>
                                 CONTINUAR
                             </button>
                         </Link>

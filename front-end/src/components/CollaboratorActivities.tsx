@@ -1,6 +1,6 @@
 import '../styles/components/CollaboratorActivities.css';
 import { ContainerUserTask } from '../styles/components/CollaboratorActivities';
-import { ModalTasksRegister } from '../components/parts/ModalTasksRegister';
+import { ModalTasksRegister } from './parts/ModalTasksRegister';
 
 import message from '../images/message.svg';
 import attach from '../images/attach.svg';

@@ -6,6 +6,8 @@ export default {
         secundary: '#fff',
         
         background: '#ffffff',
-        text: '#333'
+        text: '#333',
+        title: '#424A57',
+        backgroundKanban: '#E5E5E5',
     },
 };
