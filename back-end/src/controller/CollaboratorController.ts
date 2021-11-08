@@ -15,11 +15,18 @@ class CollaboratorController {
 
         const collaboratorRepository = getRepository(Collaborator);
 
+        const requestImages = request.files as Express.Multer.File[];
+
+        const images = requestImages.map(image => {
+            return {path: image.filename}
+        })
+
         const collaborator = collaboratorRepository.create({
             name,
             sobrenome,
             email,
             password,
+            images
             // administrador_id,
             // tarefas_id
         })

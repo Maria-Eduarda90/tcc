@@ -13,11 +13,11 @@ const administradorController = new AdministradorController;
 const collaboratorController = new CollaboratorController;
 const tarefasController = new TarefasController;
 
-router.post("/collaborator", upload.single('images'), collaboratorController.create);
+router.post("/collaborator", upload.array('images'), collaboratorController.create);
 router.get("/collaborator/:id", administradorController.show);
 
 router.get("/administrador", administradorController.index);
-router.post("/administrador", upload.single('images'), administradorController.create);
+router.post("/administrador", upload.array('images'), administradorController.create);
 
 router.post("/tarefas", tarefasController.create);
 

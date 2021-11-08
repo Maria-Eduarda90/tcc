@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Administrador } from '../models/Administrador';
+import  Administrador  from '../models/Administrador';
 import { Collaborator } from '../models/Collaborator';
 
 class AdministradorController{
@@ -35,12 +35,19 @@ class AdministradorController{
 
         const administradorRepository = getRepository(Administrador);
 
+        const requestImages = request.files as Express.Multer.File[];
+
+        const images = requestImages.map(image => {
+            return {path: image.filename}
+        })
+
         const administrador = administradorRepository.create({
             name,
             nome_empresa,
             email,
             password,
             token,
+            images
             // collaborator_id,
             // tarefas_id,
         })

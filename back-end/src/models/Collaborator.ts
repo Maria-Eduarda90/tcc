@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, OneToMany } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { Images } from './Images';
-import { Administrador } from './Administrador';
+import  imagesCollaborator  from './ImagesCollaborator';
+import  Administrador  from './Administrador';
 import { Tarefas } from './Tarefas'
 
 @Entity("collaborator")
@@ -30,10 +30,11 @@ class Collaborator {
     @CreateDateColumn()
     created_at: Date;
 
-    // @OneToOne(() => Images, images => images.collaborator, {
-    //     cascade: ['insert', 'update']
-    // })
-    // images: Images;
+    @OneToMany(() => imagesCollaborator, image => image.collaborator, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'collaborator_id' })
+    images: imagesCollaborator[];
 
     // @OneToOne(() => Administrador, administrador => administrador.collaborator, {
     //     cascade: ['insert', 'update']

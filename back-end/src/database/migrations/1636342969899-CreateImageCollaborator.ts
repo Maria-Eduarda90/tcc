@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateImages1636064079911 implements MigrationInterface {
+export class CreateImageCollaborator1636342969899 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "images",
+                name: "imagesCollaborator",
                 columns: [
                     {
                         name: "id",
@@ -24,39 +24,27 @@ export class CreateImages1636064079911 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     },
-                    // {
-                    //     name: "collaborator_id",
-                    //     type: "integer",
-                    // },
                     {
-                        name: "administrador_id",
-                        type: "integer"
-                    }
+                        name: "collaborator_id",
+                        type: "integer",
+                    },
                 ],
                 foreignKeys: [
-                    // {
-                    //     name: "ImagesCollaborator",
-                    //     columnNames: ["collaborator_id"],
-                    //     referencedTableName: 'collaborator',
-                    //     referencedColumnNames: ['id'],
-                    //     onUpdate: 'CASCADE',
-                    //     onDelete: 'CASCADE',
-                    // },
                     {
-                        name: "ImagesAdministrador",
-                        columnNames: ["administrador_id"],
-                        referencedTableName: 'administrador',
+                        name: "ImagesCollaborator",
+                        columnNames: ["collaborator_id"],
+                        referencedTableName: 'collaborator',
                         referencedColumnNames: ['id'],
                         onUpdate: 'CASCADE',
                         onDelete: 'CASCADE',
-                    }
+                    },
                 ]
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('images');
+        await queryRunner.dropTable('imagesCollaborator')
     }
 
 }

@@ -1,11 +1,11 @@
 import { Column, Entity, PrimaryColumn , OneToOne, JoinColumn, OneToMany, CreateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import {Images} from './Images'
-import { Collaborator } from './Collaborator';
+import  Images from './Images'
+// import { Collaborator } from './Collaborator';
 import { Tarefas } from './Tarefas'
 
 @Entity("administrador")
-class Administrador{
+export default class Administrador{
     @PrimaryColumn()
     readonly id: string;
 
@@ -33,10 +33,11 @@ class Administrador{
     // @Column()
     // tarefas_id: number;
 
-    // @OneToOne(() => Images, images => images.administrador, {
-    //     cascade: ['insert', 'update']
-    // })
-    // images: Images;
+    @OneToMany(() => Images, image => image.administrador, {
+        cascade: ['insert', 'update']
+    })
+    @JoinColumn({ name: 'administrador_id' })
+    images: Images[];
 
     // @OneToMany(() => Collaborator, collaborator => collaborator.administrador, {
     //     cascade: ['insert', 'update']
@@ -53,6 +54,4 @@ class Administrador{
             this.id = uuid();
         }
     }
-}
-
-export { Administrador }
+}   

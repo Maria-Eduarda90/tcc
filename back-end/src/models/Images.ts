@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn, CreateDateColumn } from 'typeorm';
-// import { Administrador } from './Administrador'
-// import { Collaborator } from './Collaborator';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn, CreateDateColumn, ManyToOne, OneToOne } from 'typeorm';
+import Administrador from './Administrador'
+import { Collaborator } from './Collaborator';
 
 @Entity("images")
-class Images {
+export default class images {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
@@ -13,11 +13,11 @@ class Images {
     @CreateDateColumn()
     created_at: Date;
 
-    // @OneToMany(() => Administrador, administrador => administrador.images)
-    // administrador: Administrador;
+    @OneToOne(() => Administrador, administrador => administrador.images)
+    @JoinColumn({ name: 'administrador_id' })
+    administrador: Administrador;
 
-    // @OneToMany(() => Collaborator, collaborator => collaborator.images)
+    // @OneToOne(() => Collaborator, collaborator => collaborator.images)
+    // @JoinColumn({ name: 'collaborator_id' })
     // collaborator: Collaborator;
 }
-
-export { Images }
