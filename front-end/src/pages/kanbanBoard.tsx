@@ -31,6 +31,7 @@ export function KanbanBoard() {
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
+                    <Taskboard/>
                 </Container>
             </ThemeProvider>
     );
