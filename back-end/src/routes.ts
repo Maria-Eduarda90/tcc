@@ -14,7 +14,7 @@ const collaboratorController = new CollaboratorController;
 const tarefasController = new TarefasController;
 
 router.post("/collaborator", upload.array('images'), collaboratorController.create);
-router.get("/collaborator/:id", administradorController.show);
+router.get("/administrador/:id", administradorController.show);
 
 router.get("/administrador", administradorController.index);
 router.post("/administrador", upload.array('images'), administradorController.create);
