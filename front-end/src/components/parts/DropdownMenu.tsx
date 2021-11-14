@@ -1,9 +1,12 @@
-import React, { useRef, useState, ChangeEvent } from 'react';
+import { useRef, useState, ChangeEvent, FormEvent } from 'react';
 import { FiPlus } from "react-icons/fi";
+import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 import { RiArrowDownSLine } from 'react-icons/ri';
 
 export const DropdownMenu = () => {
+    const history = useHistory();
     const dropdownRef = useRef(null);
     const [ isActive, setIsActive ] = useState(false);
     const [ images, setImages ] = useState("");
@@ -18,12 +21,25 @@ export const DropdownMenu = () => {
         }
     }
 
+    async function handleSubmit(event: FormEvent){
+        event.preventDefault();
+    
+        const data = new FormData();
+    
+        data.append('images', images)
+        console.log(images)
+    
+        await api.post('administrador', data);
+    
+        history.push('/dashboard');
+      }
+
     return(
         <div className="menu-container">
             <div onClick={handleDropdownMenuActive} className="menu-trigger">
                 <RiArrowDownSLine/>
             </div>
-            <form action="" method="POST">
+            <form onSubmit={handleSubmit}>
                 <nav
                 ref={dropdownRef}
                 className={
@@ -32,7 +48,7 @@ export const DropdownMenu = () => {
                     <div>
                         <div className="imageDropdown">
                             <label htmlFor="image" className="new-image">
-                                <img src={images}/>
+                                <img key={images} src={images}/>
                                 <FiPlus size={30} color="#15b6d6" />
                             </label>
                             
@@ -40,7 +56,7 @@ export const DropdownMenu = () => {
                             <p>Alterar foto de perfil</p>
                         </div>
                         <div className="DropdownButton">
-                            <button>Salvar</button>
+                            <button type="submit">Salvar</button>
                         </div>
                     </div>
                 </nav>

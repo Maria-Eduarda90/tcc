@@ -1,21 +1,11 @@
+import { useEffect, useState } from 'react'
 import background from '../images/background.png';
 import { Link } from 'react-router-dom';
+import api from '../services/api';
 
 import '../styles/pages/login.css'
 
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
-import { validations } from '../validation/validation';
-
-import { ErrorMessage } from '../styles/validationStyled/validationStyled';
-
 export function Login(){
-    const formik = useFormik({
-        initialValues: { email: '', senha: ''},
-        validationSchema: Yup.object(validations),
-        onSubmit: (values) => {console.log()},
-    });
 
     return(
         <div className="container">
@@ -23,24 +13,20 @@ export function Login(){
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-                <form action="" method="POST" onSubmit={formik.handleSubmit}>
+                <form action="" method="POST">
                     <div className="input-div">
                         <div className="div-icon">
                             <h1>Seu email</h1>
                             <label className="sr-only" htmlFor="email">email</label>
-                            <input type="text" name="email" id="email" onChange={formik.handleChange}
-                         value={formik.values.email}/>
+                            <input type="text" name="email" id="email" required/>
                         </div>
-                        {formik.errors.email && formik.touched.email && <ErrorMessage>{formik.errors.email}</ErrorMessage>}
                     </div>
                     <div className="input-icons">
                         <div className="div-iconTwo">
                             <h1>Senha</h1>
                             <label className="sr-only" htmlFor="senha">senha</label>
-                            <input type="password" name="senha" id="senha" onChange={formik.handleChange}
-                         value={formik.values.senha}/>
+                            <input type="password" name="senha" id="senha" required/>
                         </div>
-                        {formik.errors.senha && formik.touched.senha && <ErrorMessage>{formik.errors.senha}</ErrorMessage>}
                     </div>
 
                     <div className="div-checkbox">

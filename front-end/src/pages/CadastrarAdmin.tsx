@@ -19,10 +19,6 @@ export function CadastrarAdmin() {
 
     var validateCamposButton = validateCampos();
 
-    
-
-
-
     return (
         <div className="container">
             <div className="img">
