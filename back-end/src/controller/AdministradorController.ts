@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm';
 import administradorView from '../views/administradorView';
 import  Administrador  from '../models/Administrador';
 import { Collaborator } from '../models/Collaborator';
+import { AppError } from '../errors/AppError';
 import * as Yup from 'yup';
 
 class AdministradorController{
@@ -46,6 +47,16 @@ class AdministradorController{
         const images = requestImages.map(image => {
             return {path: image.filename}
         })
+
+        const administradorAlreadyExists = await administradorRepository.findOne({
+            email,
+            nome_empresa,
+            token
+        })
+
+        if(administradorAlreadyExists){
+            throw new AppError("Administrador already exists!")
+        }
 
         // const administrador = administradorRepository.create({
         //     name,
