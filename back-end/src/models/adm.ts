@@ -1,4 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import Image from './image';
 
 @Entity('adm')
 export default class Adm {
@@ -19,8 +20,11 @@ export default class Adm {
 	senha: string;
 
 	@Column()
-	images: string;
-
-	@Column()
 	chave_acesso: string;
+
+	@OneToMany(() => Image, image => image.adm, {
+		cascade: ['insert', 'update']
+	})
+	@JoinColumn({ name: 'adm_id' })
+	images: Image[];
 }

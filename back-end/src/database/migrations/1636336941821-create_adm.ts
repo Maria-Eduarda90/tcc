@@ -16,29 +16,24 @@ export class createAdm1636336941821 implements MigrationInterface {
         },
         {
           name: 'nome',
-          type: 'text',
+          type: 'varchar',
         },
         {
           name: 'nome_empresa',
-          type: 'text',
+          type: 'varchar',
         },
         {
           name: 'email',
-          type: 'text',
+          type: 'varchar',
 
         },
         {
           name: 'senha',
-          type: 'text',
-        },
-        {
-          name: 'images',
-          type: 'text',
+          type: 'varchar',
         },
         {
           name: 'chave_acesso',
-          type: 'text',
-
+          type: 'varchar',
         },
       ],
     }))
