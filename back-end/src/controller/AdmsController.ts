@@ -67,13 +67,13 @@ export default {
         };
 
         const schema = Yup.object().shape({
-            nome: Yup.string().required(),
-            nome_empresa: Yup.string().required(),
-            email: Yup.string().required(),
-            senha: Yup.string().required(),
-            chave_acesso: Yup.string().required(),
+            nome: Yup.string().required("Nome obrigatório"),
+            nome_empresa: Yup.string().required("Nome da empresa obrigatório"),
+            email: Yup.string().required("Email obrigatório").email(),
+            senha: Yup.string().required("Senha obrigatório"),
+            chave_acesso: Yup.string().required("Chave obrigatório"),
             images: Yup.array(Yup.object().shape({
-                path: Yup.string().required(),
+                path: Yup.string(),
             }))
         });
 
