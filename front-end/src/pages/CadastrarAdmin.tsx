@@ -1,13 +1,24 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import background from '../images/background.png';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import UserContext from "../context/user/context";
 
 
 import '../styles/pages/cadastrarAdmin.css';
 
+
 export function CadastrarAdmin() {
     const [name, setName] = useState('');
     const [nameEmpresa, setNameEmpresa] = useState('');
+
+    
+    const { setState: setGlobalState } = useContext(UserContext);
+
+    function handleSubmit() {
+        setGlobalState({ name, nameEmpresa });
+    }
+
+
 
     const handlerInput = () => {
         if (name.length >= 5 && nameEmpresa.length >= 5) {
@@ -16,27 +27,22 @@ export function CadastrarAdmin() {
     }
     const validateInput = handlerInput();
 
-    
-
-    
     return (
         <div className="container">
             <div className="img">
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-                <form className="form" action="" method="POST">
                     <div className="div-h1">
                         <h1 className="h1">Cadastramento</h1>
                     </div>
-
                     <div className="content">
                         <div className="input-div">
                             <div>
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required />
-                                
+
                             </div>
                         </div>
                         <div className="input-icons">
@@ -45,19 +51,18 @@ export function CadastrarAdmin() {
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
                                 <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required />
                                 <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
-                               
+
                             </div>
                         </div>
                     </div>
 
                     <div className="button">
-                        <Link to="createToken" className="LinkPropsButton register">
-                            <button className={validateInput ? "continueCorazul" : "continue"} disabled={!validateInput}>
+                        <NavLink to="/createToken" className="LinkPropsButton register">
+                            <button onClick={handleSubmit} className={validateInput ? "continueCorazul" : "continue"} disabled={!validateInput} >
                                 CONTINUAR
                             </button>
-                        </Link>
+                        </NavLink>
                     </div>
-                </form>
             </div>
         </div>
     );
