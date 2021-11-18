@@ -87,6 +87,9 @@ const ModalCollaborator: React.FC = () => {
                             <p>Nome</p>
                             <input type="text" name="text" id="text" required/>
 
+                            <p>Sobrenome</p>
+                            <input type="text" name="text" id="text" required/>
+
                             <p>Senha</p>
                             <input type="password" name="password" id="password" required/>
 
