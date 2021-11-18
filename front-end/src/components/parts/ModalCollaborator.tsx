@@ -97,7 +97,7 @@ const ModalCollaborator: React.FC = () => {
                             <input type="password" name="password" id="password" required/>
 
                             <div className="arrow">
-                                <h2>Cadastrar Colaborador</h2>
+                                <h2>Cadastrar novo colaborador</h2>
                                 <button type="submit">
                                     <BiIcons.BsArrowRight/>
                                 </button>
