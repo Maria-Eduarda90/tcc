@@ -84,21 +84,21 @@ const ModalCollaborator: React.FC = () => {
                     <div className="containerModal">
                         <h2>Cadastrar novo colaboradores</h2>
                         <form action="" method="POST">
-                            <p>Nome</p>
+                            <p>Nome Completo</p>
                             <input type="text" name="text" id="text" required/>
-
-                            <p>Sobrenome</p>
-                            <input type="text" name="text" id="text" required/>
-
-                            <p>Senha</p>
-                            <input type="password" name="password" id="password" required/>
 
                             <p>Email</p>
                             <input type="email" name="email" id="email" required/>
 
+                            <p>Senha</p>
+                            <input type="password" name="password" id="password" required/>
+
+                            <p>Confirma senha</p>
+                            <input type="password" name="password" id="password" required/>
+
                             <div className="arrow">
-                                <h2>Enviar E-mail de confirmação para cadastro</h2>
-                                <button>
+                                <h2>Cadastrar Colaborador</h2>
+                                <button type="submit">
                                     <BiIcons.BsArrowRight/>
                                 </button>
                             </div>
