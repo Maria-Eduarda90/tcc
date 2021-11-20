@@ -50,7 +50,7 @@ export function CreateToken() {
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-                <form className="form-token" onSubmit={handlerSubmit}  method="post">
+                <form className="form-token" onSubmit={handlerSubmit} method="post">
                     <div className="input-div">
                         <div className="div-icon">
                             <h1>Seu email</h1>
@@ -84,7 +84,9 @@ export function CreateToken() {
                         </div>
                     </div>
                     <div className={validateInput ? "button finishAzul" : "button finish"}>
-                        <input type="submit" className="LinkButton" value="FINALIZAR" />
+                        <button type="submit" className="LinkButton" >
+                            FINALIZAR
+                        </button>
                     </div>
                 </form>
             </div>
