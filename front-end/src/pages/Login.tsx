@@ -1,46 +1,88 @@
 import background from '../images/background.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import '../styles/pages/login.css'
+import { useState } from 'react';
+import api from '../services/api';
 
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
-import { validations } from '../validation/validation';
+interface ITokenMessage {
+    token: number;
+    message: string;
 
-import { ErrorMessage } from '../styles/validationStyled/validationStyled';
+}
 
-export function Login(){
-    const formik = useFormik({
-        initialValues: { email: '', senha: ''},
-        validationSchema: Yup.object(validations),
-        onSubmit: (values) => {console.log()},
-    });
+export function Login() {
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
-    return(
+
+
+    const  handleSubmit = async (ev:  React.FormEvent<HTMLFormElement>) => {
+        ev.preventDefault();
+        const data = {
+            'email': email,
+            'senha': senha,
+        }
+
+        const autenticated = await api.post('/admAuth', data);
+        const teste: ITokenMessage = autenticated.data
+    
+        try{
+            if (teste.token == 1234) {
+                alert('Logado com sucesso!');
+                history.push('/dashboard');
+            }else {
+                alert(teste.message);
+                setEmail('');
+                setSenha('');
+                
+            }
+        } catch (error) {
+            alert('Erro interno, tente novamente mais tarde!');
+        }
+        
+    }
+
+    const disabledButton = email.includes('@' && '.com') && senha.length >= 6;
+    const validarCamposEmail = () => {
+        if (!email.includes('@' && '.com') && email.length > 0) {
+            return <span><br />campo precisa ser email: teste@gmail.com</span>
+        }
+    }
+
+    const validarCampoSenha = () => {
+        if (senha.length > 0 && senha.length <= 5 ) {
+            return <span><br />Campos não pode ser menor 6 caracteres</span>
+        }
+    }
+
+    const messageEmail = validarCamposEmail();
+    const messageSenha = validarCampoSenha();
+
+    return (
         <div className="container">
             <div className="img">
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-                <form action="" method="POST" onSubmit={formik.handleSubmit}>
+                <form action="" method="POST" onSubmit={handleSubmit}>
                     <div className="input-div">
                         <div className="div-icon">
                             <h1>Seu email</h1>
                             <label className="sr-only" htmlFor="email">email</label>
-                            <input type="text" name="email" id="email" onChange={formik.handleChange}
-                         value={formik.values.email}/>
+                            <input type="text" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
+                            {messageEmail}
                         </div>
-                        {formik.errors.email && formik.touched.email && <ErrorMessage>{formik.errors.email}</ErrorMessage>}
                     </div>
                     <div className="input-icons">
                         <div className="div-iconTwo">
                             <h1>Senha</h1>
                             <label className="sr-only" htmlFor="senha">senha</label>
-                            <input type="password" name="senha" id="senha" onChange={formik.handleChange}
-                         value={formik.values.senha}/>
+                            <input type="password" name="senha" id="senha" onChange={e => setSenha(e.target.value)} value={senha} />
+                            {messageSenha}
                         </div>
-                        {formik.errors.senha && formik.touched.senha && <ErrorMessage>{formik.errors.senha}</ErrorMessage>}
                     </div>
 
                     <div className="div-checkbox">
@@ -50,13 +92,13 @@ export function Login(){
                     </div>
 
                     <div className="buttons">
-                        <button className="enter">
+                        <button className={disabledButton ? 'enter' : 'noProssed'} disabled={!disabledButton}>
                             ENTRAR
                         </button>
                     </div>
                 </form>
                 <Link to="cadastrarAdmin" className="LinkPropsButton">
-                    <button className="LinkButton">
+                    <button type="button" className="LinkButton" >
                         CRIAR NOVA CONTA
                     </button>
                 </Link>

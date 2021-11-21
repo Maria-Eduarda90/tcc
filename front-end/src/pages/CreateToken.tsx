@@ -4,8 +4,11 @@ import '../styles/pages/createToken.css';
 
 import api from '../services/api';
 import UserContext from '../context/user/context';
+import { useHistory } from 'react-router-dom';
+
 
 export function CreateToken() {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmSenha, setConfirmSenha] = useState('');
@@ -18,43 +21,41 @@ export function CreateToken() {
     const validateConfirmSenha = confirmSenha.length >= 5;
     const validateEmail = email.length >= 5;
     const validateToken = token.length >= 9;
-
     const validateInformation = email.length >= 5 && senha.length >= 5 && token.length >= 5;
 
     const handlerSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
-        ev.preventDefault();
-        // const data = {
-        //     'nome': state.name,
-        //     'nome_empresa': state.nameEmpresa,
-        //     'email': email,
-        //     'senha': senha,
-        //     'chave_acesso': token,
-        //     'images': images,
-        // };
-        const data = new FormData();
-        data.append('nome', state.name);
-        data.append('nome_empresa', state.nameEmpresa);
-        data.append('email', email);
-        data.append('senha', senha);
-        data.append('chave_acesso', token);
-        images.forEach(image => {
-            data.append('images', image)
-        });
-        await api.post('/adm', data).then(response => console.log(response));
+        try {
+            ev.preventDefault();
+            const data = new FormData();
+            data.append('nome', state.name);
+            data.append('nome_empresa', state.nameEmpresa);
+            data.append('email', email);
+            data.append('senha', senha);
+            data.append('chave_acesso', token);
+            images.forEach(image => {
+                data.append('images', image)
+            });
+            const created = await api.post('/adm', data);
+
+            if (created.status == 201) {
+                alert('Cadastro realizado com sucesso!');
+                history.push('/');
+            }
+        } catch (error) {
+            alert('Erro interno, tente novamente mais tarde!');
+        }
     }
 
     const validateCampos = () => {
         if (validateSenha && validateEmail && validateConfirmSenha && validateToken) {
             return true;
         }
-
     }
 
     const senhaPrecisaSerIgual = () => {
         if (senha != confirmSenha) {
             return true;
         }
-
     }
 
 
@@ -62,16 +63,11 @@ export function CreateToken() {
         if (validateInformation) {
             return true;
         }
-
     }
+
     var validateInput = handlerInput();
-
-
     var validateInput = validateCampos();
     var validarSenha = senhaPrecisaSerIgual();
-
-
-
 
 
     return (
@@ -87,7 +83,6 @@ export function CreateToken() {
                             <label className="sr-only" htmlFor="email">email</label>
                             <input type="email" name="email" id="email" required onChange={e => setEmail(e.target.value)} />
                             {validateEmail ? null : <p><span>O email precisa possuir pelo menos 5 characters</span></p>}
-
                         </div>
                     </div>
                     <div className="input-icons">
@@ -97,7 +92,6 @@ export function CreateToken() {
                             <input type="password" name="password" id="password" required onChange={e => setSenha(e.target.value)} />
                             {validateSenha ? null : <p><span>A senha precisa possuir pelo menos 8 characteres</span></p>}
                             {validarSenha ? <p><span>As senhas não são identicas</span></p> : null}
-
                         </div>
                     </div>
                     <div className="input-icons">
@@ -105,7 +99,7 @@ export function CreateToken() {
                             <h1>Confirmar sua senha</h1>
                             <label className="sr-only" htmlFor="passwordConfirm">confirmSenha</label>
                             <label className="sr-only" htmlFor="password">confirmSenha</label>
-                            <input type="password" name="password" id="password" required onChange={e => setConfirmSenha(e.target.value)} />
+                            <input type="password" name="passwordConfirm" id="passwordConfirm" required onChange={e => setConfirmSenha(e.target.value)} />
                             {validateConfirmSenha ? null : <p><span>A senha precisa possuir pelo menos 8 characteres</span></p>}
                             {validarSenha ? <p><span>As senhas não são identicas</span></p> : null}
 

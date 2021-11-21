@@ -75,6 +75,29 @@ input{
     margin-top: 2rem;
 }
 
+button.noProssed{
+    border: none;
+    background-color: #999;
+    cursor: no-drop;
+    border-radius: 0.437rem;
+    font-size: 0.875rem;
+    color: var(--blue-dark);
+    font-family: 'Poppins', sans-serif;
+    margin-right: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.937rem;
+    padding: 0.75rem 4rem;
+}
+button.enter{
+    border: .2rem solid var(--blue-dark);
+    cursor: pointer;
+    border-radius: 0.437rem;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 2.5rem;
+}
+
+
 
 @media(max-width: 500px){
     .container-form{
@@ -87,3 +110,8 @@ input{
         display: none;
     }
 }
+
+/* button {
+    
+    b
+} */
