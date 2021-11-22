@@ -44,45 +44,6 @@ const ModalCollaborator: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="delete">
-                        <div className="image ContainerCollaborator">
-                            <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
-                            <div>
-                                <p>Paulo cesar</p>
-                                <p>emailaleatorio@hotmail.com</p>
-                            </div>
-                        </div>
-                        <button className="buttonDelete">
-                            <img src={DeleteImg} alt="DELETE" />
-                        </button>
-                    </div>
-
-                    <div className="delete">
-                        <div className="image ContainerCollaborator">
-                            <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
-                            <div>
-                                <p>Paulo cesar</p>
-                                <p>emailaleatorio@hotmail.com</p>
-                            </div>
-                        </div>
-                        <button className="buttonDelete">
-                            <img src={DeleteImg} alt="DELETE" />
-                        </button>
-                    </div>
-
-                    <div className="delete">
-                        <div className="image ContainerCollaborator">
-                            <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
-                            <div>
-                                <p>Paulo cesar</p>
-                                <p>emailaleatorio@hotmail.com</p>
-                            </div>
-                        </div>
-                        <button className="buttonDelete">
-                            <img src={DeleteImg} alt="DELETE" />
-                        </button>
-                    </div>
-
                     <div className="containerModal">
                         <h2>Cadastrar novo colaboradores</h2>
                         <form action="" method="POST">

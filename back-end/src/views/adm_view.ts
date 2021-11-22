@@ -8,7 +8,6 @@ export default {
             nome: adm.nome,
             nome_empresa: adm.nome_empresa,
             email: adm.email,
-            chave_acesso: adm.chave_acesso,
             images: ImageView.renderMany(adm.images)
         }
     },

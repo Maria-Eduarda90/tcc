@@ -7,21 +7,27 @@ import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './parts/SideMenuData'
 import { DropdownMenu } from './parts/DropdownMenu';
-import  ModalCollaborator  from '../components/parts/ModalCollaborator';
+import ModalCollaborator from '../components/parts/ModalCollaborator';
 
 import '../styles/components/sidebar.css';
 import { ThemeContext } from 'styled-components';
 
 import { ContainerSidebar } from '../styles/components/sidebar';
-import { Container } from '../styles/components/parts/modalCollaborator';
+import { PropsAdm } from '../utils/structAdm';
+
 
 interface Props {
     toggleTheme(): void;
+    propsAdm?: PropsAdm;
+
 }
 
-const Sidebar: React.FC<Props> = ({ toggleTheme }) => {
+
+const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm }) => {
+
     const [sidebar, setSidebar] = useState(false);
     const { colors, title } = useContext(ThemeContext);
+
 
     function showSidebar() {
         setSidebar(!sidebar);
@@ -38,34 +44,34 @@ const Sidebar: React.FC<Props> = ({ toggleTheme }) => {
                     </div>
                     {/* verificação condicional nos permitem alternar entre mostrar e ocultar nossa barra lateral */}
                     <ContainerSidebar>
-                    <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                        <ul className='nav-menu-items'>
-                            <li className='navbar-toogle'>
-                                <Link to='#' className="menu-bars close">
-                                    <AiIcons.AiOutlineClose onClick={showSidebar} />
-                                </Link>
-                            </li>
+                        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                            <ul className='nav-menu-items'>
+                                <li className='navbar-toogle'>
+                                    <Link to='#' className="menu-bars close">
+                                        <AiIcons.AiOutlineClose onClick={showSidebar} />
+                                    </Link>
+                                </li>
 
-                            <ModalCollaborator/>
-                            {/* usando a função map para mapear e criar os elememtos da barra lateral usando os dados em SideBarData.tsx*/}
-                            {SidebarData.map((item, index) => {
-                                return (
-                                    <li key={index} className={item.cName}>
-                                        <div>
-                                            {item.icon}
-                                            <span>{item.title}</span>
-                                            <Switch 
-                                                onChange={toggleTheme}
-                                                checked={title === 'dark'}
-                                                checkedIcon={false}
-                                                uncheckedIcon={false}
-                                            />
-                                        </div>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </nav>
+                                <ModalCollaborator />
+                                {/* usando a função map para mapear e criar os elememtos da barra lateral usando os dados em SideBarData.tsx*/}
+                                {SidebarData.map((item, index) => {
+                                    return (
+                                        <li key={index} className={item.cName}>
+                                            <div>
+                                                {item.icon}
+                                                <span>{item.title}</span>
+                                                <Switch
+                                                    onChange={toggleTheme}
+                                                    checked={title === 'dark'}
+                                                    checkedIcon={false}
+                                                    uncheckedIcon={false}
+                                                />
+                                            </div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </nav>
                     </ContainerSidebar>
                 </div>
                 <div className="profile">
@@ -73,7 +79,7 @@ const Sidebar: React.FC<Props> = ({ toggleTheme }) => {
                         <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="Profile" />
                     </div>
                     <div className="profileName">
-                        <p>Samilly Borges</p>
+                        <p>{propsAdm?.nome ?? "None"}</p>
                     </div>
                     <div>
                         <DropdownMenu />

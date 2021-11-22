@@ -7,6 +7,7 @@ import api from '../services/api';
 
 
 interface ITokenMessage {
+    id: string;
     token: number;
     message: string
 }
@@ -26,14 +27,15 @@ export function Login() {
         }
 
         const autenticated = await api.post('/admAuth', data);
-        const teste: ITokenMessage = autenticated.data
+        const getInformationToken: ITokenMessage = autenticated.data;
+        console.log(autenticated);
     
         try{
-            if (teste.token == 1234) {
-                alert(teste.message);
-                history.push('/dashboard');
+            if (getInformationToken.token == 1234) {
+                alert(getInformationToken.message);
+                history.push(`/dashboard/${getInformationToken.id}`);
             }else {
-                alert(teste.message);
+                alert(getInformationToken.message);
                 setEmail('');
                 setSenha('');
             }
