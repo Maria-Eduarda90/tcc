@@ -73,8 +73,7 @@ export function CreateToken() {
                         <h1>Confirmar sua senha</h1>
                         <label className="sr-only" htmlFor="password">confirmSenha</label>
                         <input type="password" name="password" id="password" required onChange={e => setConfirmSenha(e.target.value)} />
-                        {validateConfirmSenha ? null : <p><ErrorMessage>A senha precisa possuir pelo menos 8 characteres</ErrorMessage></p> }
-                        {validarSenha ? <p><span>As senhas não são identicas</span></p> : null }
+                        {validarSenha ? <p><ErrorMessage>As senhas não são identicas</ErrorMessage></p> : null }
                         <label className="sr-only" htmlFor="password">senha</label>
                        
                     </div>

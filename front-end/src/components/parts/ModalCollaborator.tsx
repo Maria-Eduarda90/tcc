@@ -38,7 +38,9 @@ const ModalCollaborator: React.FC = () => {
                             </div>
                         </div>
                         <div>
-                            <img src={DeleteImg} alt="DELETE" />
+                            <button className="buttonDelete">
+                                <img src={DeleteImg} alt="DELETE" />
+                            </button>
                         </div>
                     </div>
 
@@ -50,9 +52,9 @@ const ModalCollaborator: React.FC = () => {
                                 <p>emailaleatorio@hotmail.com</p>
                             </div>
                         </div>
-                        <div>
+                        <button className="buttonDelete">
                             <img src={DeleteImg} alt="DELETE" />
-                        </div>
+                        </button>
                     </div>
 
                     <div className="delete">
@@ -63,9 +65,9 @@ const ModalCollaborator: React.FC = () => {
                                 <p>emailaleatorio@hotmail.com</p>
                             </div>
                         </div>
-                        <div>
+                        <button className="buttonDelete">
                             <img src={DeleteImg} alt="DELETE" />
-                        </div>
+                        </button>
                     </div>
 
                     <div className="delete">
@@ -76,9 +78,9 @@ const ModalCollaborator: React.FC = () => {
                                 <p>emailaleatorio@hotmail.com</p>
                             </div>
                         </div>
-                        <div>
+                        <button className="buttonDelete">
                             <img src={DeleteImg} alt="DELETE" />
-                        </div>
+                        </button>
                     </div>
 
                     <div className="containerModal">

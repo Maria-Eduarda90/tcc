@@ -50,6 +50,11 @@ export const Container =  styled.div `
         justify-content: space-between;
     }
 
+    .buttonDelete {
+        background: none;
+        border: none
+    }
+
     .ContainerFlexbox p {
         color: ${props => props.theme.colors.text};
         font-family: 'Poppins', sans-serif;
