@@ -30,8 +30,6 @@ export function Login(){
                     </div>
 
                     <div className="div-checkbox">
-                        <input type="checkbox" name="checkbox" id="checkbox" />
-                        <a href="">Lembrar senha?</a>
                         <a href="">Esqueci minha senha</a>
                     </div>
 
