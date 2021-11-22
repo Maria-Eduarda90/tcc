@@ -39,6 +39,7 @@ export const ContainerUserTask = styled.div `
     margin-top: 1rem;
 }
 .descriptionUser p{
+    color: ${props => props.theme.colors.text};
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 0.75rem;

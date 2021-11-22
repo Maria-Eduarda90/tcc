@@ -84,7 +84,7 @@ const ModalCollaborator: React.FC = () => {
                     <div className="containerModal">
                         <h2>Cadastrar novo colaboradores</h2>
                         <form action="" method="POST">
-                            <p>Nome Completo</p>
+                            <p>Nome completo</p>
                             <input type="text" name="text" id="text" required/>
 
                             <p>Email</p>

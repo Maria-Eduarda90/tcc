@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import background from '../images/background.png';
 import { Link } from 'react-router-dom';
+import { ErrorMessage } from '../styles/validationStyled/validationStyled';
 
 
 import '../styles/pages/cadastrarAdmin.css';
@@ -25,7 +26,7 @@ export function CadastrarAdmin() {
                 <img src={background} alt="fundo" />
             </div>
             <div className="container-form">
-                <form className="form" action="" method="POST">
+                <form className="form" action="/createToken">
                     <div className="div-h1">
                         <h1 className="h1">Cadastramento</h1>
                     </div>
@@ -36,7 +37,7 @@ export function CadastrarAdmin() {
                                 <h1>Seu nome</h1>
                                 <label className="sr-only" htmlFor="text">seu nome</label>
                                 <input type="text" name="text" id="text" onChange={e => setName(e.target.value)} required />
-                                {validateName ? null : <p><span>O seu nome precisa ter no mínimo 5 characters</span></p> }
+                                {validateName ? null : <p><ErrorMessage>O seu nome precisa ter no mínimo 5 characters</ErrorMessage></p> }
                             </div>
                         </div>
                         <div className="input-icons">
@@ -45,18 +46,18 @@ export function CadastrarAdmin() {
                                 <label className="sr-only" htmlFor="text">Nome da empresa</label>
                                 <input type="text" name="text" id="text" onChange={e => setNameEmpresa(e.target.value)} required />
                                 <label className="sr-only" htmlFor="nome_da_empresa">Nome da empresa</label>
-                                {validateNameEmpresa ? null : <p><span>O nome da empresa precisa ter no mínimo 5 characters</span></p> }
+                                {validateNameEmpresa ? null : <p><ErrorMessage>O nome da empresa precisa ter no mínimo 5 characters</ErrorMessage></p> }
                                
                             </div>
                         </div>
                     </div>
 
                     <div className="button">
-                        <Link to="createToken" className="LinkPropsButton register">
+                        <div className="LinkPropsButton register">
                             <button className={validateCamposButton ? "continueCorazul" : "continue"} disabled={!validateCampos}>
                                 CONTINUAR
                             </button>
-                        </Link>
+                        </div>
                     </div>
                 </form>
             </div>

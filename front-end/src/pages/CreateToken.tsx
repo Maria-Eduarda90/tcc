@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import background from '../images/background.png';
 import '../styles/pages/createToken.css';
-
+import { ErrorMessage } from '../styles/validationStyled/validationStyled'
 
 
 
@@ -53,7 +53,7 @@ export function CreateToken() {
                         <h1>Seu email</h1>
                         <label className="sr-only" htmlFor="email">email</label>
                         <input type="email" name="email" id="email" required onChange={e => setEmail(e.target.value)}/>
-                        {validateEmail ? null : <p><span>O email precisa possuir pelo menos 5 characters</span></p> }
+                        {validateEmail ? null : <p><ErrorMessage>O email precisa possuir pelo menos 5 characters</ErrorMessage></p> }
                        
                          
                     </div>
@@ -63,8 +63,8 @@ export function CreateToken() {
                         <h1>Senha</h1>
                         <label className="sr-only" htmlFor="password">senha</label>
                         <input type="password" name="password" id="password" required onChange={e => setSenha(e.target.value)}/>
-                        {validateSenha ? null : <p><span>A senha precisa possuir pelo menos 8 characteres</span></p> }
-                        {validarSenha ? <p><span>As senhas não são identicas</span></p> : null }
+                        {validateSenha ? null : <p><ErrorMessage>A senha precisa possuir pelo menos 8 characteres</ErrorMessage></p> }
+                        {validarSenha ? <p><ErrorMessage>As senhas não são identicas</ErrorMessage></p> : null }
                         
                     </div>
                 </div>
@@ -73,7 +73,7 @@ export function CreateToken() {
                         <h1>Confirmar sua senha</h1>
                         <label className="sr-only" htmlFor="password">confirmSenha</label>
                         <input type="password" name="password" id="password" required onChange={e => setConfirmSenha(e.target.value)} />
-                        {validateConfirmSenha ? null : <p><span>A senha precisa possuir pelo menos 8 characteres</span></p> }
+                        {validateConfirmSenha ? null : <p><ErrorMessage>A senha precisa possuir pelo menos 8 characteres</ErrorMessage></p> }
                         {validarSenha ? <p><span>As senhas não são identicas</span></p> : null }
                         <label className="sr-only" htmlFor="password">senha</label>
                        

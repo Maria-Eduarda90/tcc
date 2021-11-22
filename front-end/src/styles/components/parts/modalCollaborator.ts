@@ -51,6 +51,7 @@ export const Container =  styled.div `
     }
 
     .ContainerFlexbox p {
+        color: ${props => props.theme.colors.text};
         font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         line-height: 1.5rem;
@@ -62,6 +63,7 @@ export const Container =  styled.div `
     }
 
     .delete p {
+        color: ${props => props.theme.colors.text};
         font-family: 'Mukta', sans-serif;
         font-weight: 700;
         font-size: 1rem;
