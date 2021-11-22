@@ -1,9 +1,13 @@
 import './styles/global.css';
 import { Routes } from './routes';
+import GlobalContext from "./context/index";
 
 function App() {
   return (
-    <Routes/>
+    <GlobalContext>
+      <Routes/>
+    </GlobalContext>
+    
   );
 }
 
