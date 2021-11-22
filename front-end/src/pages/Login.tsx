@@ -8,8 +8,7 @@ import api from '../services/api';
 
 interface ITokenMessage {
     token: number;
-    message: string;
-
+    message: string
 }
 
 export function Login() {
@@ -31,13 +30,12 @@ export function Login() {
     
         try{
             if (teste.token == 1234) {
-                alert('Logado com sucesso!');
+                alert(teste.message);
                 history.push('/dashboard');
             }else {
                 alert(teste.message);
                 setEmail('');
                 setSenha('');
-                
             }
         } catch (error) {
             alert('Erro interno, tente novamente mais tarde!');

@@ -21,7 +21,7 @@ export default {
         })
 
         if (administradorAlreadyExists) {
-            return response.status(200).json({ token: 1234 })
+            return response.status(200).json({ token: 1234, message: "Logado com sucesso!" })
         } else {
             return response.status(200).json({ message: 'usuário ou senha inválida' })
         }
