@@ -21,7 +21,6 @@ export default {
         })
 
         if (administradorAlreadyExists) {
-        administradorAlreadyExists.id
             return response.status(200).json({ id: administradorAlreadyExists.id, token: 1234, message: "Logado com sucesso!" })
         } else {
             return response.status(200).json({ message: 'usuário ou senha inválida' })
@@ -48,18 +47,56 @@ export default {
     },
 
     async delete(request: Request, response: Response) {
-
-        const { id } = request.params;
-
         const admRepository = getRepository(Adm);
-
-        const adm = await admRepository.findOneOrFail(id);
-        const adms = await admRepository.find({ relations: ['images'] });
-        adms.length !== 0 ? admRepository.delete(adm) : console.log("bla");
-
-        return response.json(adm);
+        const { id } = request.params;
+        const administradorAlreadyExists = await admRepository.findOne(id);
+        if(administradorAlreadyExists){
+            admRepository.delete(administradorAlreadyExists);
+            return response.status(200).json({ message: 'Administrador apagado com sucesso!' });
+        }
+        response.status(200).json({ message: 'Error internal server' });
     },
 
+    async put(request: Request, response: Response) {
+        const admRepository = getRepository(Adm);
+        const { uid } = request.params;
+        const id = parseInt(uid);
+        const administradorAlreadyExists = await admRepository.findOne(uid);
+        if (administradorAlreadyExists) {
+            const requestImages = request.files as Express.Multer.File[];
+            const images = requestImages.map(image => {
+                return { path: image.filename }
+            });
+            const {
+                nome,
+                nome_empresa,
+                email,
+                senha,
+                chave_acesso
+            } = administradorAlreadyExists;
+
+            const data = {
+                id,
+                nome,
+                nome_empresa,
+                email,
+                senha,
+                chave_acesso,
+                images
+            };
+
+
+            const adm = admRepository.create(data);
+            await admRepository.save(adm);
+
+
+
+            return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
+        }
+        return response.status(200).json({ message: 'Error internal server'});
+
+
+    },
 
     async create(request: Request, response: Response) {
         const {

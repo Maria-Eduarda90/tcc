@@ -4,7 +4,7 @@ import { CollaboratorActivities } from '../components/CollaboratorActivities';
 
 import GlobalStyle from '../styles/global';
 
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import usePersistedState from '../utils/usePersistedState';
 
 import light from '../styles/themes/light';
@@ -14,41 +14,46 @@ import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import { PropsAdm, PropsAdmParams } from '../utils/structAdm';
 
+const LoadingPage = styled.p`
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+`;
+
 
 export function Dashboard() {
-    const [ theme, setTheme ] = usePersistedState('theme', light);
-
-    const params = useParams<PropsAdmParams>();
     const [adm, setAdm] = useState<PropsAdm>();
+    const [theme, setTheme] = usePersistedState('theme', light);
+    const params = useParams<PropsAdmParams>();
+
 
 
     useEffect(() => {
-        console.log("antes")
-        api.get(`/adm`).then(response => {
+        api.get(`/adm/${params.id}`).then(response => {
             setAdm(response.data);
-            console.log(response);
-            console.log("dentro")
-
+            console.log(response.data);
+            console.log("adm: ", adm);
         });
-        console.log("depois")
 
     }, [params.id]);
 
     if (!adm) {
-        <p>carregando...</p>
+        return <LoadingPage>carregando...</LoadingPage>
     }
 
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
     }
 
-    return(
+    return (
         <ThemeProvider theme={theme}>
             <div>
-                <GlobalStyle/>
-                <Sidebar toggleTheme={toggleTheme} propsAdm={adm}/>
-                <UserTask/>
-                <CollaboratorActivities/>
+                <GlobalStyle />
+                <Sidebar toggleTheme={toggleTheme} propsAdm={adm} />
+                <UserTask />
+                <CollaboratorActivities />
             </div>
         </ThemeProvider>
     );

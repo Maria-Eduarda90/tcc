@@ -14,7 +14,7 @@ export function Routes(){
                 <Route path="/" exact component={Login}/>
                 <Route path="/cadastrarAdmin" component={CadastrarAdmin}/>
                 <Route path="/createToken" component={CreateToken}/>
-                <Route path="/dashboard" component={Dashboard}/>
+                <Route path="/dashboard/:id" component={Dashboard}/>
                 <Route path="/kanbanBoard" component={KanbanBoard}/>
                 <Route path="/Teste" component={Teste}/>
             </Switch>

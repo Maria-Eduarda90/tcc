@@ -111,8 +111,8 @@ export function CreateToken() {
                     <div className="token">
                         <div>
                             <h1>Token de acesso</h1>
-                            <label className="sr-only" htmlFor="password">token</label>
-                            <input type="text" name="password" id="token" placeholder="XXX-XXX-XXX" required onChange={e => setToken(e.target.value)} />
+                            <label className="sr-only" htmlFor="token">token</label>
+                            <input type="text" name="token" id="token" placeholder="XXX-XXX-XXX" required onChange={e => setToken(e.target.value)} />
                         </div>
                         <div className={validateInput ? "button finishAzul" : "button finish"}>
                             <button type="submit" className="LinkButton" >

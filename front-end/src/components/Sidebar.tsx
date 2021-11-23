@@ -76,7 +76,7 @@ const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm }) => {
                 </div>
                 <div className="profile">
                     <div className="image">
-                        <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="Profile" />
+                    <img src={propsAdm?.images[0]?.url??"https://styles.redditmedia.com/t5_3saob8/styles/communityIcon_nbdzwdzb9md61.png"} alt="Profile" />
                     </div>
                     <div className="profileName">
                         <p>{propsAdm?.nome ?? "None"}</p>

@@ -1,10 +1,10 @@
 export interface PropsAdm {
-    id: string;
+    // id: string;
     nome: string;
     nome_empresa: string;
     email: string;
     images: Array<{
-        path: string;
+        url: string;
     }>;
 }
 
