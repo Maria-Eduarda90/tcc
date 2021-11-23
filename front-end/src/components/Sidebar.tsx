@@ -82,7 +82,7 @@ const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm }) => {
                         <p>{propsAdm?.nome ?? "None"}</p>
                     </div>
                     <div>
-                        <DropdownMenu />
+                        <DropdownMenu propsAdm={propsAdm}/>
                     </div>
                 </div>
             </div>

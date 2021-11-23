@@ -4,6 +4,7 @@ export interface PropsAdm {
     nome_empresa: string;
     email: string;
     images: Array<{
+        id: number;
         url: string;
     }>;
 }

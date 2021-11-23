@@ -50,7 +50,7 @@ export default {
         const admRepository = getRepository(Adm);
         const { id } = request.params;
         const administradorAlreadyExists = await admRepository.findOne(id);
-        if(administradorAlreadyExists){
+        if (administradorAlreadyExists) {
             admRepository.delete(administradorAlreadyExists);
             return response.status(200).json({ message: 'Administrador apagado com sucesso!' });
         }
@@ -60,12 +60,17 @@ export default {
     async put(request: Request, response: Response) {
         const admRepository = getRepository(Adm);
         const { uid } = request.params;
+        // console.log("request: ", request)
+        console.log("response: ", response.statusCode)
         const id = parseInt(uid);
         const administradorAlreadyExists = await admRepository.findOne(uid);
         if (administradorAlreadyExists) {
             const requestImages = request.files as Express.Multer.File[];
             const images = requestImages.map(image => {
-                return { path: image.filename }
+                return {
+                    id: id,
+                    path: image.filename
+                }
             });
             const {
                 nome,
@@ -88,14 +93,11 @@ export default {
 
             const adm = admRepository.create(data);
             await admRepository.save(adm);
-
-
-
+            
             return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
+            
         }
-        return response.status(200).json({ message: 'Error internal server'});
-
-
+        return response.status(200).json({ message: 'Error internal server', code: '0000'});
     },
 
     async create(request: Request, response: Response) {
