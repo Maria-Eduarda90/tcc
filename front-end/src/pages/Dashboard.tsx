@@ -33,8 +33,6 @@ export function Dashboard() {
     useEffect(() => {
         api.get(`/adm/${params.id}`).then(response => {
             setAdm(response.data);
-            console.log(response.data);
-            console.log("adm: ", adm);
         });
 
     }, [params.id]);

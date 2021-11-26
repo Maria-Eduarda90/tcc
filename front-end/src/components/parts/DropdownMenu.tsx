@@ -4,16 +4,13 @@ import api from '../../services/api';
 import { useHistory, useParams } from 'react-router-dom';
 
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { PropsAdmParams, PropsAdm } from '../../utils/structAdm';
+import { PropsAdmParams, PropsAdm, IMessageProps } from '../../utils/structAdm';
 
 interface IProps {
     propsAdm?: PropsAdm;
 }
 
-interface IMessageProps {
-    message?: string;
-    code: string;
-}
+
 
 export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
     const history = useHistory();
@@ -43,7 +40,7 @@ export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        api.get(`/adm/${params.id}`)
+        // api.get(`/adm/${params.id}`) TODO: comentado para saber se está sendo usado
         const data = new FormData();
         images.forEach(image => {
             data.append('images', image)
@@ -53,7 +50,6 @@ export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
 
         api.put(`/adm/${params.id}`, data).then(response => {
             const message: IMessageProps = response.data;
-            console.log(response);
             window.location.reload();
         })
 

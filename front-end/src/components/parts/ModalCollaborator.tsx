@@ -3,12 +3,44 @@ import { Container } from '../../styles/components/parts/modalCollaborator';
 
 import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
-import DeleteImg from '../../images/delete.svg';
+import api from '../../services/api';
+import { PropsAdmParams } from '../../utils/structAdm';
+import CardColaborador from './SectionCardColaborador';
 
 const ModalCollaborator: React.FC = () => {
     const [ModalCollaboratorActive, setModalCollaboratorActive] = useState(false);
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [images, setImages] = useState<File[]>([]);
+    const params = useParams<PropsAdmParams>();
+    const adm_id = params.id;
+
+    
+
+    const handlerSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
+        try {
+            ev.preventDefault();
+            const data = new FormData();
+            data.append('nome', nome);
+            data.append('email', email);
+            data.append('senha', senha);
+            data.append('adm_id', adm_id);
+            images.forEach(image => {
+                data.append('images', image)
+            });
+            const created = await api.post('/colaborador', data);
+
+            if (created.status == 201) {
+                alert('Colaborador cadastrodo com sucesso!');
+            }
+        } catch (error) {
+            alert('Erro interno, tente novamente mais tarde! ' + error);
+        }
+
+    }
 
     function handleActiveModalCollaborator() {
         setModalCollaboratorActive(!ModalCollaboratorActive);
@@ -29,39 +61,26 @@ const ModalCollaborator: React.FC = () => {
                         </Link>
                     </div>
 
-                    <div className="delete">
-                        <div className="image ContainerCollaborator">
-                            <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
-                            <div>
-                                <p>Paulo cesar</p>
-                                <p>emailaleatorio@hotmail.com</p>
-                            </div>
-                        </div>
-                        <div>
-                            <button className="buttonDelete">
-                                <img src={DeleteImg} alt="DELETE" />
-                            </button>
-                        </div>
-                    </div>
+                    <CardColaborador/>
 
                     <div className="containerModal">
                         <h2>Cadastrar novo colaboradores</h2>
-                        <form action="" method="POST">
+                        <form onSubmit={handlerSubmit}>
                             <p>Nome completo</p>
-                            <input type="text" name="text" id="text" required/>
+                            <input type="text" name="text" id="text" onChange={e => setNome(e.target.value)} required/>
 
                             <p>Email</p>
-                            <input type="email" name="email" id="email" required/>
+                            <input type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} required/>
 
                             <p>Senha</p>
-                            <input type="password" name="password" id="password" required/>
+                            <input type="password" name="password" id="password" onChange={e => setSenha(e.target.value)} required/>
 
                             <p>Confirma senha</p>
                             <input type="password" name="password" id="password" required/>
 
                             <div className="arrow">
                                 <h2>Cadastrar novo colaborador</h2>
-                                <button type="submit">
+                                <button type="submit" >
                                     <BiIcons.BsArrowRight/>
                                 </button>
                             </div>

@@ -12,3 +12,8 @@ export interface PropsAdm {
 export interface PropsAdmParams {
     id: string;
 }
+
+export interface IMessageProps {
+    message?: string;
+    code: string;
+}

@@ -21,17 +21,27 @@ export class createImages1636941253263 implements MigrationInterface {
         {
           name: 'adm_id',
           type: 'integer',
+          isNullable: true,
         },
-        // {
-        //   name: 'colaborador_id',
-        //   type: 'integer',
-        // },
+        {
+          name: 'colaborador_id',
+          type: 'integer',
+          isNullable: true,
+        },
       ],
       foreignKeys: [
         {
           name: 'ImageAdm',
           columnNames: ['adm_id'],
           referencedTableName: 'adm',
+          referencedColumnNames: ['id'],
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
+        },
+        {
+          name: 'ImageColaborador',
+          columnNames: ['colaborador_id'],
+          referencedTableName: 'colaborador',
           referencedColumnNames: ['id'],
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',

@@ -31,7 +31,7 @@ export default {
     async index(request: Request, response: Response) {
         const admRepository = getRepository(Adm);
 
-        const adms = await admRepository.find({ relations: ['images'] });
+        const adms = await admRepository.find({ relations: ['images']});
 
         return response.json(AdmView.renderMany(adms));
     },
@@ -60,8 +60,6 @@ export default {
     async put(request: Request, response: Response) {
         const admRepository = getRepository(Adm);
         const { uid } = request.params;
-        // console.log("request: ", request)
-        console.log("response: ", response.statusCode)
         const id = parseInt(uid);
         const administradorAlreadyExists = await admRepository.findOne(uid);
         if (administradorAlreadyExists) {
@@ -97,7 +95,7 @@ export default {
             return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
             
         }
-        return response.status(200).json({ message: 'Error internal server', code: '0000'});
+        return response.status(200).json({ message: 'Error internal server'});
     },
 
     async create(request: Request, response: Response) {
@@ -106,9 +104,10 @@ export default {
             nome_empresa,
             email,
             senha,
-            chave_acesso
+            chave_acesso,
+            colaborador,
         } = request.body;
-
+        console.log(request.body);
         const admRepository = getRepository(Adm);
 
         const requestImages = request.files as Express.Multer.File[];
@@ -122,7 +121,8 @@ export default {
             email,
             senha,
             chave_acesso,
-            images
+            images,
+            colaborador,
         };
 
         const schema = Yup.object().shape({
@@ -131,6 +131,7 @@ export default {
             email: Yup.string().required("Email obrigatório").email(),
             senha: Yup.string().required("Senha obrigatório"),
             chave_acesso: Yup.string().required("Chave obrigatório"),
+            colaborador: Yup.string(),
             images: Yup.array(Yup.object().shape({
                 path: Yup.string(),
             }))
