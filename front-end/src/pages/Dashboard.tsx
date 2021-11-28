@@ -12,7 +12,7 @@ import dark from '../styles/themes/dark';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../services/api';
-import { PropsAdm, PropsAdmParams } from '../utils/structAdm';
+import { PropsAdm, PropsParams } from '../utils/estrutura_interfaces';
 
 const LoadingPage = styled.p`
 
@@ -26,7 +26,7 @@ const LoadingPage = styled.p`
 export function Dashboard() {
     const [adm, setAdm] = useState<PropsAdm>();
     const [theme, setTheme] = usePersistedState('theme', light);
-    const params = useParams<PropsAdmParams>();
+    const params = useParams<PropsParams>();
 
 
 

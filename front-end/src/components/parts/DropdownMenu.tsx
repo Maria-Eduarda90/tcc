@@ -4,7 +4,7 @@ import api from '../../services/api';
 import { useHistory, useParams } from 'react-router-dom';
 
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { PropsAdmParams, PropsAdm, IMessageProps } from '../../utils/structAdm';
+import { PropsParams, PropsAdm, IMessageProps } from '../../utils/estrutura_interfaces';
 
 interface IProps {
     propsAdm?: PropsAdm;
@@ -18,7 +18,7 @@ export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
     const [isActive, setIsActive] = useState(false);
     const [images, setImages] = useState<File[]>([]);
     const [preview, setPreview] = useState<string[]>([]);
-    const params = useParams<PropsAdmParams>();
+    const params = useParams<PropsParams>();
 
     function handleDropdownMenuActive() {
         setIsActive(!isActive);

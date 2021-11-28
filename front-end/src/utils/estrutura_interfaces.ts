@@ -9,11 +9,20 @@ export interface PropsAdm {
     }>;
 }
 
-export interface PropsAdmParams {
+export interface PropsParams {
     id: string;
 }
 
 export interface IMessageProps {
     message?: string;
     code: string;
+}
+
+export interface IColaboradorProp{
+    nome?: string;
+    email?: string;
+    images?: Array<{
+        id?: number;
+        url?: string;
+    }>;
 }

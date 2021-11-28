@@ -13,7 +13,7 @@ import '../styles/components/sidebar.css';
 import { ThemeContext } from 'styled-components';
 
 import { ContainerSidebar } from '../styles/components/sidebar';
-import { PropsAdm } from '../utils/structAdm';
+import { PropsAdm } from '../utils/estrutura_interfaces';
 
 
 interface Props {

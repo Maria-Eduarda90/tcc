@@ -6,7 +6,7 @@ import * as BiIcons from 'react-icons/bs';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
 import api from '../../services/api';
-import { PropsAdmParams } from '../../utils/structAdm';
+import { PropsParams } from '../../utils/estrutura_interfaces';
 import CardColaborador from './SectionCardColaborador';
 
 const ModalCollaborator: React.FC = () => {
@@ -15,7 +15,7 @@ const ModalCollaborator: React.FC = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [images, setImages] = useState<File[]>([]);
-    const params = useParams<PropsAdmParams>();
+    const params = useParams<PropsParams>();
     const adm_id = params.id;
 
     
