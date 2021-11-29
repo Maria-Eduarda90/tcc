@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Switch from 'react-switch';
 
 import * as FaIcons from 'react-icons/fa';
@@ -13,20 +13,23 @@ import '../styles/components/sidebar.css';
 import { ThemeContext } from 'styled-components';
 
 import { ContainerSidebar } from '../styles/components/sidebar';
-import { PropsAdm } from '../utils/estrutura_interfaces';
+import { IColaboradorProp, PropsAdm } from '../utils/estrutura_interfaces';
 
 
 interface Props {
     toggleTheme(): void;
     propsAdm?: PropsAdm;
+    propsColaborador?: Array<IColaboradorProp>;
 
 }
 
 
-const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm }) => {
+const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm, propsColaborador }) => {
 
     const [sidebar, setSidebar] = useState(false);
     const { colors, title } = useContext(ThemeContext);
+
+
 
 
     function showSidebar() {
@@ -52,7 +55,7 @@ const Sidebar: React.FC<Props> = ({ toggleTheme, propsAdm }) => {
                                     </Link>
                                 </li>
 
-                                <ModalCollaborator />
+                                <ModalCollaborator/>
                                 {/* usando a função map para mapear e criar os elememtos da barra lateral usando os dados em SideBarData.tsx*/}
                                 {SidebarData.map((item, index) => {
                                     return (

@@ -4,7 +4,7 @@ import { CollaboratorActivities } from '../components/CollaboratorActivities';
 
 import GlobalStyle from '../styles/global';
 
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import usePersistedState from '../utils/usePersistedState';
 
 import light from '../styles/themes/light';
@@ -13,14 +13,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import { PropsAdm, PropsParams } from '../utils/estrutura_interfaces';
+import { LoadingPage } from '../styles/components/Loding';
 
-const LoadingPage = styled.p`
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-`;
 
 
 export function Dashboard() {
@@ -29,13 +24,13 @@ export function Dashboard() {
     const params = useParams<PropsParams>();
 
 
-
     useEffect(() => {
         api.get(`/adm/${params.id}`).then(response => {
             setAdm(response.data);
+            console.log("response data: ",response.data);
         });
-
     }, [params.id]);
+    
 
     if (!adm) {
         return <LoadingPage>carregando...</LoadingPage>
@@ -49,7 +44,7 @@ export function Dashboard() {
         <ThemeProvider theme={theme}>
             <div>
                 <GlobalStyle />
-                <Sidebar toggleTheme={toggleTheme} propsAdm={adm} />
+                <Sidebar toggleTheme={toggleTheme} propsAdm={adm}/>
                 <UserTask />
                 <CollaboratorActivities />
             </div>

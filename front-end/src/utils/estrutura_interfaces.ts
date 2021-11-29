@@ -17,12 +17,20 @@ export interface IMessageProps {
     message?: string;
     code: string;
 }
+export interface IStatusCadastroColaborador{
+    status?: number;
+}
 
 export interface IColaboradorProp{
-    nome?: string;
-    email?: string;
-    images?: Array<{
-        id?: number;
-        url?: string;
+    id: string;
+    nome: string;
+    email: string;
+    images: Array<{
+        id: number;
+        url: string;
     }>;
+}
+
+export interface IIndexElement{
+    index: number;
 }
