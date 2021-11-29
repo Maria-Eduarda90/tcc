@@ -6,7 +6,7 @@ background: white;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(200, 200, 222, 0.25);
     border: 1px solid var(--grey-100);
-    cursor: grab;
+    cursor: move;
     .containerCard {
         padding: 1rem;
     }

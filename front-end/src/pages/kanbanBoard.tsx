@@ -29,7 +29,7 @@ export function KanbanBoard() {
     }
 
     return(
-        <DndProvider backend={HTML5Backend}>
+        // <DndProvider backend={HTML5Backend}>
             <ThemeProvider theme={theme}>
                 <Container>
                     <GlobalStyle/>
@@ -38,6 +38,6 @@ export function KanbanBoard() {
                     <Board/>
                 </Container>
             </ThemeProvider>
-        </DndProvider>
+        // </DndProvider>
     );
 }

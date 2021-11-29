@@ -1,22 +1,20 @@
-import React from 'react'
-import { useDrag } from 'react-dnd';
+import { useDrag, useDrop } from 'react-dnd';
+import { ItemTypes } from '../Board/itemTypes';
 
 import * as C from './style';
 
-interface PropsCard {
-    data: string;
-}
-
 export const Card: React.FC = () => {
-    const [{ isDragging }, dragRef] = useDrag({
-        type: "card",
-        collect: monitor => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
+    const [, drag] = useDrag(() => ({ type: ItemTypes.Done }))
+    // const [{ isDragging }, dragRef] = useDrag({
+    //     type: "card",
+    //     collect: monitor => ({
+    //         isDragging: monitor.isDragging(),
+    //     }),
+    // });
+   
 
     return (
-        <C.Container ref={dragRef}>
+        <C.Container ref={drag}>
             <div className="containerCard">
                 <h1>Fazer orçamento</h1>
                 <p>Orçamento de veículos para uma viagem de um servidor para o interior.</p>
