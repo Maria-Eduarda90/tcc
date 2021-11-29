@@ -22,9 +22,6 @@ export const Container = styled.div`
         font-size: 1.2rem;
         
     }
-
-
-
 `;
 
 export const CardTarefa = styled.div`
