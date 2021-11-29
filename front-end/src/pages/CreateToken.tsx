@@ -7,6 +7,7 @@ import { ErrorMessage } from '../styles/validationStyled/validationStyled'
 import api from '../services/api';
 import UserContext from '../context/user/context';
 import { useHistory } from 'react-router-dom';
+import { exit } from 'process';
 
 
 export function CreateToken() {
@@ -17,6 +18,12 @@ export function CreateToken() {
     const [token, setToken] = useState('');
     const [images, setImages] = useState<File[]>([]);
     const { setState, state } = useContext(UserContext);
+    const chaves_acessos = [
+        "XAV-BCX-AHJ",
+        "XAA-BCA-AKJ",
+        "KKV-BCX-BBJ",
+        "XTT-BCX-WEJ",
+    ];
 
 
     const validateSenha = senha.length >= 5;
@@ -25,27 +32,47 @@ export function CreateToken() {
     const validateToken = token.length >= 9;
     const validateInformation = email.length >= 5 && senha.length >= 5 && token.length >= 5;
 
-    const handlerSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
-        try {
-            ev.preventDefault();
-            const data = new FormData();
-            data.append('nome', state.name);
-            data.append('nome_empresa', state.nameEmpresa);
-            data.append('email', email);
-            data.append('senha', senha);
-            data.append('chave_acesso', token);
-            images.forEach(image => {
-                data.append('images', image)
-            });
-            const created = await api.post('/adm', data);
-
-            if (created.status == 201) {
-                alert('Cadastro realizado com sucesso!');
-                history.push('/');
+    const validarToken = () => {
+        for (var i = 0; i < chaves_acessos.length; i++) {
+            if (token == chaves_acessos[i]) {
+                return true;
             }
-        } catch (error) {
-            alert('Erro interno, tente novamente mais tarde!');
+            else {
+                return false;
+            }
         }
+    }
+    const isApprove = validarToken();
+
+    const handlerSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
+        if (isApprove) {
+            ev.preventDefault();
+            try {
+                const data = new FormData();
+                data.append('nome', state.name);
+                data.append('nome_empresa', state.nameEmpresa);
+                data.append('email', email);
+                data.append('senha', senha);
+                data.append('chave_acesso', token);
+                images.forEach(image => {
+                    data.append('images', image)
+                });
+                const created = await api.post('/adm', data);
+
+                if (created.status == 201) {
+                    alert('Cadastro realizado com sucesso!');
+                    history.push('/');
+                }
+            } catch (error) {
+                console.log(error);
+                alert('Erro interno, tente novamente mais tarde!');
+            }
+        }
+        else {
+            ev.preventDefault();
+            alert("Chave de acesso inválida. \nContate seu administrador!")
+        }
+
     }
 
     const validateCampos = () => {
@@ -66,6 +93,9 @@ export function CreateToken() {
             return true;
         }
     }
+
+
+
 
     var validateInput = handlerInput();
     var validateInput = validateCampos();
@@ -114,7 +144,7 @@ export function CreateToken() {
                             <label className="sr-only" htmlFor="token">token</label>
                             <input type="text" name="token" id="token" placeholder="XXX-XXX-XXX" required onChange={e => setToken(e.target.value)} />
                         </div>
-                        <div className={validateInput ? "button finishAzul" : "button finish"}>
+                        <div className={validateInput && validarToken ? "button finishAzul" : "button finish"}>
                             <button type="submit" className="LinkButton" >
                                 FINALIZAR
                             </button>
