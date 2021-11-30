@@ -7,7 +7,6 @@ import { ErrorMessage } from '../styles/validationStyled/validationStyled'
 import api from '../services/api';
 import UserContext from '../context/user/context';
 import { useHistory } from 'react-router-dom';
-import { exit } from 'process';
 
 
 export function CreateToken() {
