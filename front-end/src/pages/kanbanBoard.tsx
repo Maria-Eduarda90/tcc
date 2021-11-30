@@ -18,26 +18,27 @@ import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 
 import { Container } from '../styles/components/parts/SidebarKanbanboard';
+import { useState } from 'react';
 
 
 export function KanbanBoard() {
     const [theme, setTheme] = usePersistedState('theme', light);
-    // const [index, setIndex] = useState(1);
+    const [moveCard, setMoveCard] = useState();
 
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
     }
 
     return(
-        // <DndProvider backend={HTML5Backend}>
+        <DndProvider backend={HTML5Backend}>
             <ThemeProvider theme={theme}>
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
                     {/* <Taskboard/> */}
-                    <Board/>
+                    <Board moveCard={moveCard} />
                 </Container>
             </ThemeProvider>
-        // </DndProvider>
+        </DndProvider>
     );
 }

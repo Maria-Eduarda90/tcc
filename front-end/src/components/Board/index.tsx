@@ -1,200 +1,92 @@
 import * as C from './style';
-import ReactKanban from 'react-kanban-dnd';
-// import React, { ReactNode, useState } from 'react'
-// import { Card } from '../Card';
-// import { useDrag, useDrop } from 'react-dnd';
-// import { ItemTypes } from './itemTypes';
-// import { ModalTasksRegister } from '../parts/ModalTasksRegister';
+// import ReactKanban from 'react-kanban-dnd';
+import React, { ReactNode, useState } from 'react'
+import { Card } from '../Card';
+import { useDrag, useDrop } from 'react-dnd';
+import { ItemTypes } from './itemTypes';
+import { ModalTasksRegister } from '../parts/ModalTasksRegister';
 
-// export interface DustbinProps {
-//     greedy?: boolean
-//     children?: ReactNode
-//   }
-  
-//   export interface DustbinState {
-//     hasDropped: boolean
-//     hasDroppedOnChild: boolean
-//   }
-  
-
-// export const Board: React.FC<DustbinProps> = () => {
-//     const [hasDropped, setHasDropped] = useState(false)
-//     const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false)
-    
-//     const [{ isOver, isOverCurrent }, drop] = useDrop(() => ({
-//           accept: ItemTypes.BOX,
-//           drop(item: unknown, monitor) {
-//             const didDrop = monitor.didDrop()
-//             if (didDrop) {
-//               return
-//             }
-//             setHasDropped(true)
-//             setHasDroppedOnChild(didDrop)
-//           },
-//           collect: (monitor) => ({
-//             isOver: monitor.isOver(),
-//             isOverCurrent: monitor.isOver({ shallow: true }),
-//           }),
-//         }),
-//     )
-//     return(
-//         <C.ContainerBoard>
-//             <C.Container ref={drop}>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-//                         <Card/>
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//         </C.ContainerBoard>
-//     )   
-// } 
-
-// export interface DustbinProps {
-//     greedy?: boolean
-//     children?: ReactNode
-//   }
-  
-//   export interface DustbinState {
-//     hasDropped: boolean
-//     hasDroppedOnChild: boolean
-//   }
-  
-//   export const Board: React.FC<DustbinProps> = ({ greedy, children }) => {
-  
-//     const [, drop] = useDrop(
-//       () => ({
-//         accept: ItemTypes.Done,
-//         collect: (monitor) => ({
-//             isOver: monitor.isOver(),
-//             canDrop: monitor.canDrop(),
-//         }),
-//       }),
-//     )
-//     return (
-//         <C.ContainerBoard>
-//             <C.Container ref={drop}>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-//                         <Card/>
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//             <C.Container>
-//                 <div className="board">
-//                     <h1>Recebidos</h1>
-//                     <div>
-                        
-//                     </div>
-//                 </div>
-//                 {/* <ModalTasksRegister/> */}
-//             </C.Container>
-//         </C.ContainerBoard>
-//     )
-//   }
- 
-
-const columns = [
-    {
-      id: "column1",
-      title: "Column 1",
-      rows: [
-        {
-          id: "children1",
-          name: "John",
-          age: "21"
-        },
-        {
-          id: "children2",
-          name: "Alex",
-          age: "33"
-        }
-      ]
-    },
-    {
-      id: "column2",
-      title: "Column 2",
-      rows: [
-        {
-          id: "children3",
-          name: "Michael",
-          age: "29"
-        },
-        {
-          id: "children4",
-          name: "Carl",
-          age: "26"
-        }
-      ]
-    }
+const tasks = [
+    { _id: 1, title: "First Task", status: "backlog" },
+    { _id: 2, title: "Second Task", status: "backlog" },
+    { _id: 3, title: "Third Task", status: "backlog" },
+    { _id: 4, title: "Fourth Task", status: "new" },
+    { _id: 5, title: "Fifth Task", status: "new" },
+    { _id: 6, title: "Sixth Task", status: "going" },
+    { _id: 7, title: "Seventh Task", status: "review" },
+    { _id: 8, title: "Eighth Task", status: "review" },
+    { _id: 9, title: "Ninth Task", status: "done" },
+    { _id: 10, title: "Tenth Task", status: "done" },
   ];
-  
-  const renderCard = (row: any) => (
-    <C.ContainerBoard>
-      <C.Container>
-        <h1>Name:</h1>
-        <span>{row.name}</span>
-      </C.Container>
-      <C.Container>
-        <h1>Age:</h1>
-        <span>{row.age}</span>
-      </C.Container>
-    </C.ContainerBoard>
-  );
-  
-export const Board = () => (
-      <ReactKanban
-        columns={columns}
-        renderCard={renderCard}
-        onDragEnd={() => {}}
-      />
-  );
+
+export interface DustbinProps {
+    moveCard: any;
+}
+
+export const Board: React.FC<DustbinProps> = ({ moveCard }) => {
+    const [ teste1, setTaste ] = useState(tasks);
+    const [hasDropped, setHasDropped] = useState(false);
+    const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
+
+    const [{ isOver, isOverCurrent }, drop] = useDrop(
+        () => ({
+          accept: 'card',
+          drop(item: unknown, monitor) {
+            const didDrop = monitor.didDrop()
+            if (didDrop) {
+              return
+            }
+            setHasDropped(true)
+            setHasDroppedOnChild(didDrop)
+          },
+          collect: (monitor) => ({
+            isOver: monitor.isOver(),
+            isOverCurrent: monitor.isOver({ shallow: true }),
+          }),
+        }),
+        [setHasDropped, setHasDroppedOnChild],
+      )
+
+      console.log('options', {isOverCurrent, isOver});
+      
+    return(
+        <C.ContainerBoard>
+            <C.Container>
+                <div className="board">
+                    <h1>Recebidos</h1>
+                    <div>
+                        <Card/>
+                    </div>
+                </div>
+                {/* <ModalTasksRegister/> */}
+            </C.Container>
+            <C.Container ref={drop}>
+                <div className="board">
+                    <h1>Recebidos</h1>
+                    <div>
+                   {hasDropped && <span><Card/> {hasDroppedOnChild && ' on child'}</span>}
+                    </div>
+                </div>
+                {/* <ModalTasksRegister/> */}
+            </C.Container>
+            <C.Container>
+                <div className="board">
+                    <h1>Recebidos</h1>
+                    <div>
+                        
+                    </div>
+                </div>
+                {/* <ModalTasksRegister/> */}
+            </C.Container>
+            <C.Container>
+                <div className="board">
+                    <h1>Recebidos</h1>
+                    <div>
+                        
+                    </div>
+                </div>
+                {/* <ModalTasksRegister/> */}
+            </C.Container>
+        </C.ContainerBoard>
+    )   
+} 

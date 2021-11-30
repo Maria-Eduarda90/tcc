@@ -7,12 +7,13 @@ export const ContainerBoard = Styled.div `
 export const Container = Styled.div `
     height: max-content;
     min-height: 6.25rem;
-    width: 18.125rem;
+    /* width: 18.125rem; */
     box-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-    /* height: 19.68rem; */
+    height: 19.68rem;
     border-radius: 8px;
     margin-top: 3rem;
     margin-left: 2rem;
+    margin-right: 2rem;
     .title {
         margin-top: 1.5rem;
     }
