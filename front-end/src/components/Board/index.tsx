@@ -2,7 +2,7 @@ import * as C from './style';
 // import ReactKanban from 'react-kanban-dnd';
 import React, { ReactNode, useState } from 'react'
 import { Card } from '../Card';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 import { ItemTypes } from './itemTypes';
 import { ModalTasksRegister } from '../parts/ModalTasksRegister';
 
@@ -10,7 +10,8 @@ export interface DustbinProps {
     moveCard: any;
 }
 
-export const Board: React.FC<DustbinProps> = ({ moveCard }) => {
+export const Board: React.FC = () => {
+
     const [hasDropped, setHasDropped] = useState(false);
     const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
 
@@ -23,11 +24,11 @@ export const Board: React.FC<DustbinProps> = ({ moveCard }) => {
               return
             }
             setHasDropped(true)
-            setHasDroppedOnChild(didDrop)
+            setHasDroppedOnChild(true);
           },
           collect: (monitor) => ({
             isOver: monitor.isOver(),
-            isOverCurrent: monitor.isOver({ shallow: true }),
+            isOverCurrent: monitor.canDrop(),
           }),
         }),
         [setHasDropped, setHasDroppedOnChild],
@@ -36,7 +37,7 @@ export const Board: React.FC<DustbinProps> = ({ moveCard }) => {
       console.log('options', {isOverCurrent, isOver});
       
     return(
-        <C.ContainerBoard>
+        <C.ContainerBoard ref={drop}>
             <C.Container>
                 <div className="board">
                     <h1>Recebidos</h1>
@@ -46,7 +47,7 @@ export const Board: React.FC<DustbinProps> = ({ moveCard }) => {
                 </div>
                 {/* <ModalTasksRegister/> */}
             </C.Container>
-            <C.Container ref={drop}>
+            <C.Container >
                 <div className="board">
                     <h1>Recebidos</h1>
                     <div>

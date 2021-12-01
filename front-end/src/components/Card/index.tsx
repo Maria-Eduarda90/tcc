@@ -4,13 +4,18 @@ import { ItemTypes } from '../Board/itemTypes';
 import * as C from './style';
 
 export const Card: React.FC = () => {
-    const [isDragging, drag] = useDrag(() => ({ type: 'card' }));
-    // const [{ isDragging }, drag] = useDrag({
-    //     type: "card",
-    //     collect: monitor => ({
-    //         isDragging: monitor.isDragging(),
-    //     }),
-    // });
+    // const [isDragging, drag] = useDrag(() => ({ type: 'card' }));
+    const [{ isDragging }, drag] = useDrag({
+        type: 'CARD',
+        end: (item, monitor) => {
+        const dropResult = monitor.getDropResult()
+        if(dropResult){
+            return console.log('teste', dropResult);
+        }},
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        }),
+    });
 
     console.log('options', isDragging, drag);
    
