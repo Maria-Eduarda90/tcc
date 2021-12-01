@@ -19,6 +19,7 @@ export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
     const [images, setImages] = useState<File[]>([]);
     const [preview, setPreview] = useState<string[]>([]);
     const params = useParams<PropsParams>();
+    console.log('params: ', params)
 
     function handleDropdownMenuActive() {
         setIsActive(!isActive);
@@ -45,8 +46,6 @@ export const DropdownMenu: React.FC<IProps> = ({ propsAdm }) => {
         images.forEach(image => {
             data.append('images', image)
         });
-
-
 
         api.put(`/adm/${params.id}`, data).then(response => {
             const message: IMessageProps = response.data;

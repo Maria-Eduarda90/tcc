@@ -7,31 +7,10 @@ import * as Yup from 'yup';
 
 export default {
 
-    async autenticate(request: Request, response: Response) {
-        const admRepository = getRepository(Adm);
-
-        const {
-            email,
-            senha,
-        } = request.body;
-
-        const administradorAlreadyExists = await admRepository.findOne({
-            email,
-            senha,
-        })
-
-        if (administradorAlreadyExists) {
-            return response.status(200).json({ id: administradorAlreadyExists.id, token: 1234, message: "Logado com sucesso!" })
-        } else {
-            return response.status(200).json({ message: 'usuário ou senha inválida' })
-        }
-
-    },
-
     async index(request: Request, response: Response) {
         const admRepository = getRepository(Adm);
 
-        const adms = await admRepository.find({ relations: ['images']});
+        const adms = await admRepository.find({ relations: ['images'] });
 
         return response.json(AdmView.renderMany(adms));
     },
@@ -91,11 +70,11 @@ export default {
 
             const adm = admRepository.create(data);
             await admRepository.save(adm);
-            
+
             return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
-            
+
         }
-        return response.status(200).json({ message: 'Error internal server'});
+        return response.status(200).json({ message: 'Error internal server' });
     },
 
     async create(request: Request, response: Response) {

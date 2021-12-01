@@ -7,27 +7,6 @@ import ColaboradorView from '../views/colaborador_view';
 
 export default {
 
-    async autenticate(request: Request, response: Response) {
-        const colaboradorRepository = getRepository(Colaborador);
-
-        const {
-            email,
-            senha,
-        } = request.body;
-
-        const colaboradorAlreadyExists = await colaboradorRepository.findOne({
-            email,
-            senha,
-        })
-
-        if (colaboradorAlreadyExists) {
-            return response.status(200).json({ id: colaboradorAlreadyExists.id, token: 1234, message: "Logado com sucesso!" })
-        } else {
-            return response.status(200).json({ message: 'usuário ou senha inválida' })
-        }
-
-    },
-
     async index(request: Request, response: Response) {
         const colaboradorRepository = getRepository(Colaborador);
 
@@ -57,46 +36,42 @@ export default {
         response.status(200).json({ message: 'Error internal server' });
     },
 
-    // async put(request: Request, response: Response) {
-    //     const colaboradorRepository = getRepository(Adm);
-    //     const { uid } = request.params;
-    //     const id = parseInt(uid);
-    //     const administradorAlreadyExists = await colaboradorRepository.findOne(uid);
-    //     if (administradorAlreadyExists) {
-    //         const requestImages = request.files as Express.Multer.File[];
-    //         const images = requestImages.map(image => {
-    //             return {
-    //                 id: id,
-    //                 path: image.filename
-    //             }
-    //         });
-    //         const {
-    //             nome,
-    //             nome_empresa,
-    //             email,
-    //             senha,
-    //             chave_acesso
-    //         } = administradorAlreadyExists;
+    async put(request: Request, response: Response) {
+        const colaboradorRepository = getRepository(Colaborador);
+        const { uid } = request.params;
+        const id = parseInt(uid);
+        const colaboradorAlreadyExists = await colaboradorRepository.findOne(uid);
+        if (colaboradorAlreadyExists) {
+            const requestImages = request.files as Express.Multer.File[];
+            const images = requestImages.map(image => {
+                return {
+                    id: id,
+                    path: image.filename
+                }
+            });
+            const {
+                nome,
+                email,
+                senha,
+            } = colaboradorAlreadyExists;
 
-    //         const data = {
-    //             id,
-    //             nome,
-    //             nome_empresa,
-    //             email,
-    //             senha,
-    //             chave_acesso,
-    //             images
-    //         };
+            const data = {
+                id,
+                nome,
+                email,
+                senha,
+                images
+            };
 
 
-    //         const adm = colaboradorRepository.create(data);
-    //         await colaboradorRepository.save(adm);
-            
-    //         return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
-            
-    //     }
-    //     return response.status(200).json({ message: 'Error internal server'});
-    // },
+            const colaborador = colaboradorRepository.create(data);
+            await colaboradorRepository.save(colaborador);
+
+            return response.status(200).json({ message: 'Sua imagem foi atualizada com sucesso' })
+
+        }
+        return response.status(200).json({ message: 'Error internal server'});
+    },
 
     async create(request: Request, response: Response) {
         const isAdm = false;

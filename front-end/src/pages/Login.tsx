@@ -26,14 +26,16 @@ export function Login() {
             'senha': senha,
         }
 
-        const autenticated = await api.post('/admAuth', data);
+        const autenticated = await api.post('/auth', data);
+        console.log("autenticated: ", autenticated);
         const getInformationToken: ITokenMessage = autenticated.data;
-        console.log(autenticated);
-    
         try{
             if (getInformationToken.token == 1234) {
                 alert(getInformationToken.message);
                 history.push(`/dashboard/${getInformationToken.id}`);
+            }else if (getInformationToken.token == 12345) {
+                alert(getInformationToken.message);
+                history.push(`/kanbanboard/${getInformationToken.id}`);
             }else {
                 alert(getInformationToken.message);
                 setEmail('');

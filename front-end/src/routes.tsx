@@ -15,7 +15,7 @@ export function Routes(){
                 <Route path="/cadastrarAdmin" component={CadastrarAdmin}/>
                 <Route path="/createToken" component={CreateToken}/>
                 <Route path="/dashboard/:id" component={Dashboard}/>
-                <Route path="/kanbanBoard" component={KanbanBoard}/>
+                <Route path="/kanbanBoard/:id" component={KanbanBoard}/>
                 <Route path="/Teste" component={Teste}/>
             </Switch>
         </BrowserRouter>
