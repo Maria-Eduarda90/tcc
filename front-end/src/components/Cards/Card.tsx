@@ -94,7 +94,7 @@ export const Card = () => {
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
                                                 style={{
-                                                    background: snapshot.isDraggingOver ? '#f8f7f7' : 'white',
+                                                    background: snapshot.isDraggingOver ? '#fafafa' : 'white',
                                                     padding: 4,
                                                     width: 270,
                                                     minHeight: 500,

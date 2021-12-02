@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const ContainerBoardCard = styled.div`
-
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
   .title {
     margin-top: 1.5rem;
   }
 `;
-
 export const Container = styled.div`
   background: white;
   border-radius: 8px;
