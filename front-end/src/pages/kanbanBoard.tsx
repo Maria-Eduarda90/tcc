@@ -1,4 +1,4 @@
-import { TesteCard } from '../components/TesteCards/TesteCard';
+import { Card } from '../components/Cards/TesteCard';
 
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
 
@@ -25,7 +25,7 @@ export function KanbanBoard() {
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                    <TesteCard/>
+                    <Card/>
                 </Container>
             </ThemeProvider>
         // {/* </DndProvider> */}

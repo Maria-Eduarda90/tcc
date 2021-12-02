@@ -4,11 +4,6 @@ import { v4 as uuid } from 'uuid';
 import * as C from './card';
 import * as B from './board';
 
-interface IdroppableIdProps {
-    droppableId: string;
-    index: number;
-}
-
 const itemsFromBackend = [
     {
         id: uuid(),
@@ -81,7 +76,7 @@ const onDragEnd = (result: any, columns: any, setColumns: any) => {
 
 };
 
-export const TesteCard = () => {
+export const Card = () => {
     const [columns, setColumns] = useState(columnsFromBackend);
     return (
         <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
@@ -98,7 +93,7 @@ export const TesteCard = () => {
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
                                                 style={{
-                                                    background: snapshot.isDraggingOver ? '#f1f0f0' : 'white',
+                                                    background: snapshot.isDraggingOver ? '#f8f7f7' : 'white',
                                                     padding: 4,
                                                     width: 270,
                                                     minHeight: 500,
