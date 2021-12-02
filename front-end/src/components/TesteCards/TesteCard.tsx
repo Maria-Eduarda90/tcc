@@ -1,33 +1,8 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
-
-// interface IItemsFromBackendProps {
-//     id?: string;
-//     content?: string;
-// }
-
-// interface IColumnsFromBackendProps {
-//     iid?:Array< {
-//         name?: string;
-//         items?: Array<IItemsFromBackendProps>,
-//     }>
-// }
-
-// interface IuuidProps {
-//     uid?: Array<{
-//         name: string,
-//         items: Array<{
-//             id: string,
-//             content: string,
-//         }>
-//     }>
-// }
-
-// const data = {
-//     name: 'todo',
-//     items: itemsFromBackend
-// }
+import * as C from './card';
+import * as B from './board';
 
 interface IdroppableIdProps {
     droppableId: string;
@@ -35,14 +10,24 @@ interface IdroppableIdProps {
 }
 
 const itemsFromBackend = [
-    { id: uuid(), content: 'First task' },
-    { id: uuid(), content: 'Second task' }
+    {
+        id: uuid(),
+        content: 'Fazer orçamento',
+        description: 'Orçamento de veículos para uma viagem de um servidor para o interior.',
+        priority: '1'
+    },
+    {
+        id: uuid(),
+        content: 'Fazer orçamento',
+        description: 'Orçamento de veículos para uma viagem de um servidor para o interior.',
+        priority: '1'
+    },
 ]
 
 
 const columnsFromBackend = {
     [uuid()]: {
-        name: "recebidos",
+        name: "Recebidos",
         items: itemsFromBackend
     },
     [uuid()]: {
@@ -62,7 +47,7 @@ const columnsFromBackend = {
 const onDragEnd = (result: any, columns: any, setColumns: any) => {
     if (!result.destination) return console.log('teste', result.destination);
     const { source, destination } = result;
-    if(source.droppableId !== destination.droppableId){
+    if (source.droppableId !== destination.droppableId) {
         const sourceColumn = columns[source.droppableId];
         const destColumn = columns[destination.droppableId];
         const sourceItems = [...sourceColumn.items];
@@ -90,10 +75,10 @@ const onDragEnd = (result: any, columns: any, setColumns: any) => {
             [source.droppableId]: {
                 ...column,
                 items: copiedItems
-        }
-    });
+            }
+        });
     }
-    
+
 };
 
 export const TesteCard = () => {
@@ -104,21 +89,23 @@ export const TesteCard = () => {
                 {Object.entries(columns).map(([id, column]) => {
                     return (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <h2>{column.name}</h2>
-                            <div style={{ margin: 8 }}>
+                            
+                            <div style={{ margin: 15 }}>
                                 <Droppable droppableId={id}>
                                     {(provided, snapshot) => {
                                         return (
-                                            <div
+                                            <B.ContainerBoardCard 
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
                                                 style={{
-                                                    background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey',
+                                                    background: snapshot.isDraggingOver ? '#f1f0f0' : 'white',
                                                     padding: 4,
-                                                    width: 250,
-                                                    minHeight: 500
-                                                }}
+                                                    width: 270,
+                                                    minHeight: 500,
+                                                    borderRadius: 8, 
+                                                }} 
                                             >
+                                                <h1>{column.name}</h1>
                                                 {column.items.map((item, index) => {
                                                     return (
                                                         <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -128,17 +115,23 @@ export const TesteCard = () => {
                                                                         ref={provided.innerRef}
                                                                         {...provided.draggableProps}
                                                                         {...provided.dragHandleProps}
-                                                                        style={{
-                                                                            userSelect: 'none',
-                                                                            padding: 16,
-                                                                            margin: '0 0 8px 0',
-                                                                            minHeight: '50px',
-                                                                            backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
-                                                                            color: 'white',
-                                                                            ...provided.draggableProps.style
-                                                                        }}
                                                                     >
-                                                                        {item.content}
+                                                                        <C.Container >
+                                                                            <div className="containerCard">
+                                                                                <h2>{item.content}</h2>
+                                                                            
+                                                                                <p>
+                                                                                    {item.description}
+                                                                                </p>
+
+                                                                                <div className="image">
+                                                                                    <div className="image ImageCard">
+                                                                                        <img src="https://i.pinimg.com/originals/43/17/19/431719fbf11680dda780e19cfb40b013.jpg" alt="profile" />
+                                                                                        <span>{item.priority}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </C.Container>
 
                                                                     </div>
                                                                 )
@@ -147,7 +140,7 @@ export const TesteCard = () => {
                                                     )
                                                 })}
                                                 {provided.placeholder}
-                                            </div>
+                                            </B.ContainerBoardCard >
                                         )
                                     }}
                                 </Droppable>

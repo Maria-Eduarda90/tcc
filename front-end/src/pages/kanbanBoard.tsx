@@ -1,10 +1,3 @@
-// import Taskboard from '../components/task/taskboard/Taskboard';
-
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-
-// import { Board } from '../components/Board';
-import  Teste  from '../components/Teste/Teste';
 import { TesteCard } from '../components/TesteCards/TesteCard';
 
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
@@ -32,9 +25,6 @@ export function KanbanBoard() {
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                    {/* <Taskboard/> */}
-                    {/* <Board /> */}
-                    {/* <Teste/> */}
                     <TesteCard/>
                 </Container>
             </ThemeProvider>
