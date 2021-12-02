@@ -55,8 +55,6 @@ function Icon(props: IIcon): JSX.Element {
 }
 
 
-
-
 export function CardExpandido() {
     return (
         <Styled.Container>
