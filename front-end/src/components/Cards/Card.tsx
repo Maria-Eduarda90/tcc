@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
-import * as C from './card';
-import * as B from './board';
+import * as C from './style';
 
 const itemsFromBackend = [
     {
@@ -15,7 +14,7 @@ const itemsFromBackend = [
         id: uuid(),
         content: 'Fazer orçamento',
         description: 'Orçamento de veículos para uma viagem de um servidor para o interior.',
-        priority: '1'
+        priority: '2'
     },
 ]
 
@@ -89,7 +88,7 @@ export const Card = () => {
                                 <Droppable droppableId={id}>
                                     {(provided, snapshot) => {
                                         return (
-                                            <B.ContainerBoardCard 
+                                            <C.ContainerBoardCard 
                                                 {...provided.droppableProps}
                                                 ref={provided.innerRef}
                                                 style={{
@@ -135,7 +134,7 @@ export const Card = () => {
                                                     )
                                                 })}
                                                 {provided.placeholder}
-                                            </B.ContainerBoardCard >
+                                            </C.ContainerBoardCard >
                                         )
                                     }}
                                 </Droppable>

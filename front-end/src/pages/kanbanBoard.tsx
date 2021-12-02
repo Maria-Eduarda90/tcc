@@ -1,4 +1,4 @@
-import { Card } from '../components/Cards/TesteCard';
+import { Card } from '../components/Cards/Card';
 
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
 
