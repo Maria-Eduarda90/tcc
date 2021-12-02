@@ -3,6 +3,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import * as C from './style';
 
+import './card.css';
+
 const itemsFromBackend = [
     {
         id: uuid(),
@@ -82,8 +84,8 @@ export const Card = () => {
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
                 {Object.entries(columns).map(([id, column]) => {
                     return (
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="teste">
+                            <h1>{column.name}</h1>
                             <div style={{ margin: 15 }}>
                                 <Droppable droppableId={id}>
                                     {(provided, snapshot) => {
@@ -99,7 +101,7 @@ export const Card = () => {
                                                     borderRadius: 8, 
                                                 }} 
                                             >
-                                                <h1>{column.name}</h1>
+                                                
                                                 {column.items.map((item, index) => {
                                                     return (
                                                         <Draggable key={item.id} draggableId={item.id} index={index}>
