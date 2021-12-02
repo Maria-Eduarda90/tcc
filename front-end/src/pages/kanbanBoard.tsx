@@ -5,6 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 // import { Board } from '../components/Board';
 import  Teste  from '../components/Teste/Teste';
+import { TesteCard } from '../components/TesteCards/TesteCard';
 
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
 
@@ -18,8 +19,6 @@ import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 
 import { Container } from '../styles/components/parts/SidebarKanbanboard';
-import { useState } from 'react';
-
 
 export function KanbanBoard() {
     const [theme, setTheme] = usePersistedState('theme', light);
@@ -35,7 +34,8 @@ export function KanbanBoard() {
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
                     {/* <Taskboard/> */}
                     {/* <Board /> */}
-                    <Teste/>
+                    {/* <Teste/> */}
+                    <TesteCard/>
                 </Container>
             </ThemeProvider>
         // {/* </DndProvider> */}
