@@ -1,8 +1,4 @@
-import Taskboard from '../components/task/taskboard/Taskboard';
-
-// import { useState } from 'react'
-// import { DndProvider } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Card } from '../components/Cards/Card';
 
 import Sidebarkanbanboard from '../components/parts/SidebarKanbanboard';
 
@@ -17,22 +13,21 @@ import dark from '../styles/themes/dark';
 
 import { Container } from '../styles/components/parts/SidebarKanbanboard';
 
-
 export function KanbanBoard() {
     const [theme, setTheme] = usePersistedState('theme', light);
-    // const [index, setIndex] = useState(1);
-
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
     }
 
     return(
+        // <DndProvider backend={HTML5Backend}>
             <ThemeProvider theme={theme}>
                 <Container>
                     <GlobalStyle/>
                     <Sidebarkanbanboard toggleTheme={toggleTheme}/>
-                    <Taskboard/>
+                    <Card/>
                 </Container>
             </ThemeProvider>
+        // {/* </DndProvider> */}
     );
 }

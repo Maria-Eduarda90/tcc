@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    //TODO: margin lateral e do topo temporario, remover
-    margin: 30px 30px;
     display: flex;
     padding: 1.5rem 2.0625rem;
     width: 43.75rem;
     height: 31.125rem;
-    background-color: grey;
     border-radius: 0.75rem;
     position: relative;
 
@@ -22,9 +19,6 @@ export const Container = styled.div`
         font-size: 1.2rem;
         
     }
-
-
-
 `;
 
 export const CardTarefa = styled.div`
@@ -162,14 +156,63 @@ export const CardBoxRender = styled.div`
     bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    border-radius: 0.9rem;
+    justify-content: space-between;
+
+
+`;
+
+export const H1 = styled.h1`
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
+    color: #78808D;
+`;
+
+export const P = styled.p`
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 12px;
+    /* identical to box height */
+
+
+    color: #78808D;
+
+`;
+
+export const AvatarImg = styled.img`
+
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    position: relative;
+    left: 16.5rem;
 
 `;
 
 
 export const Card = styled.div`
-    width: 19.5rem;
-    height: 3.187rem;
-    border-radius: 0.5rem;
-    /* border: 1px solid var(--grey-100); */
-    border: 0.0625rem solid red;
+    width: 19.6rem;
+    height: 3.25rem;
+    padding-left: 0.5rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--grey-100);
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+`;
+
+export const CardExt = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
 `;
